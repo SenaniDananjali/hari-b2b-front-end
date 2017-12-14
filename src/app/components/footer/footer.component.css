@@ -1,0 +1,39 @@
+.footer {
+  text-align:center ;
+  background: center ;
+  color: chartreuse;
+  background:linen;
+  align-items: center;
+  font-family: "Bitstream Charter";
+  font-size: 20px;
+  background-color: rgba(40, 40, 40, 0.8);
+
+}
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+li {
+  float:left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+.navfooter{
+  position: fixed;
+  width:100%;
+  bottom:0;
+  left:0;
+  right:0;
+  overflow: hidden;
+  align-content: center;
+}

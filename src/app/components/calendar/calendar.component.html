@@ -1,0 +1,20 @@
+<div class="calendar container">
+  <h2 style="text-align: center">Choose Your Sessions</h2>
+
+  <div id="cal" class="flex-container">
+
+
+    <div class="calendar-days">S</div>
+    <div class="calendar-days">M</div>
+    <div class="calendar-days ">T</div>
+    <div class="calendar-days ">W</div>
+    <div class="calendar-days ">T</div>
+    <div class="calendar-days ">F</div>
+    <div class="calendar-days ">S</div>
+  </div>
+  <div class="flex-container">
+    <div id=calendarDates *ngFor="let days of daysArr">
+      {{days}}
+    </div>
+  </div>
+</div>

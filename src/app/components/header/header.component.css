@@ -1,0 +1,77 @@
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+  width:100%;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover {
+  background-color: #111;
+}
+.active{
+  background: #111;
+}
+
+nav.navbar{
+  position: fixed;
+  top:0;
+  left:0;
+  right:0;
+  overflow: hidden;
+
+}
+div.header{
+  position:absolute;
+  top: 0;
+  padding-top: 40px;
+  text-align:center ;
+  background: center ;
+  color:fuchsia;
+  background:linen;
+  align-items: center;
+  font-family: "Bitstream Charter";
+  font-size:75px;
+  background-color: rgba(40, 40, 40, 0.8);
+  width: 100%;
+
+}
+div.parallax {
+  /* The image used */
+  background-image: url("../../../assets/back1.jpg");
+
+
+  /* Set a specific height */
+  min-height: 1000px;
+
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+}
+
+.pt-200{
+  padding-top: 400px;
+}
+
+.background-awesome{
+  color: white;
+  background-color: rgba(0,0,0,.6);
+
+}
+

@@ -1,0 +1,20 @@
+<form (submit)="onSearch(search.value)">
+  <div>Search your Stylist By Skill or his/her Name
+  </div>
+
+
+  <div class="text-center">
+    <div>
+      <input type="radio" name="searchType" checked [(ngModel)]="radioData" value="Stylist name" >Search by Name
+      <input type="radio" name="searchType"  [(ngModel)]="radioData" value="Stylist skill" >Search by Skills
+    </div>
+    <div>
+
+      <input  type="text" #search placeholder="Search your stylist by {{radioData}}" style="width:500px">
+
+    </div>
+
+  </div>
+
+
+</form>

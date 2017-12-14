@@ -1,0 +1,49 @@
+<div class="back">
+  <img class="profile" src="../../../assets/profile.jpg" alt="profile" width="300" height="300">
+
+  <div>
+    <img class="ratings" src="../../../assets/ratings4.png" style="width:110px">
+  </div>
+
+  <div class="skills">
+    <ul>
+      <li *ngFor="let sk of skills">{{sk}}</li>
+      <h4>{{amount}} {{currency}} per Half Day</h4>
+    </ul>
+
+  </div>
+  <div class="galleryMain">
+
+
+    <div class="gallery">
+      <img src={{galleryPath[0]}} alt="Fjords" width="300" height="200">
+
+    </div>
+
+    <div class="gallery">
+      <img src={{galleryPath[1]}} alt="Forest" width="300" height="200">
+
+    </div>
+
+
+    <div class="gallery">
+      <img src={{galleryPath[3]}} alt="Mountains" width="300" height="200">
+
+    </div>
+    <div class="gallery">
+      <img src={{galleryPath[4]}} alt="Mountains" width="300" height="200">
+
+    </div>
+    <div class="gallery">
+      <img src={{galleryPath[6]}} alt="Mountains" width="300" height="200">
+
+    </div>
+    <div class="gallery">
+      <img src={{galleryPath[5]}} alt="Mountains" width="300" height="200">
+
+    </div>
+  </div>
+
+
+</div>
+
