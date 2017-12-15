@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import * as moment from 'moment';
+import {require} from '../../../test';
 
 
 @Component({
@@ -8,25 +9,40 @@ import * as moment from 'moment';
   styleUrls: ['./calendar.component.css']
 })
 export class CalendarComponent implements OnInit {
-  public date = moment();
+  public date = moment(); //today
   public daysArr;
+  public weekArr;
+
 
   constructor() {
   }
 
   ngOnInit() {
-    this.daysArr = this.createCalendar(this.date);
 
+    this.daysArr = this.createCalendar(this.date);
+    /*this.weekArr = this.createWeek(this.date);*/
   }
 
   createCalendar(month) {
-    let firstday = moment(month).startOf('M');
-    let days = Array.apply(null, {length: month.daysInMonth()})
+    const moment = require('moment');
+    const firstday = moment(month).startOf('M');
+    const days = Array.apply(null, {length: month.daysInMonth()})
       .map(Number.call, Number);
-    console.log(days);
+    //console.log(moment().weekday(-7));
+    // console.log(moment().weekday(0));
+    console.log(moment());
+    console.log(moment.day(1));
+    //console.log(nextday().date);
+
     return days;
 
 
+  }
+
+  createWeek(month) {
+    const days = Array.apply(null, {length: 7}).map(Number.call, Number);
+    console.log(moment().startOf('week').toString());
+    return days;
   }
 
 }
