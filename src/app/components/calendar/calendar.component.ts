@@ -27,33 +27,20 @@ export class CalendarComponent implements OnInit {
   public day14;
   public day15;
 
+  public day: any[] = [];
 
   constructor() {
   }
 
   ngOnInit() {
 
-    this.today = this.getDate(0);
-    this.day1 = this.getDate(1);
-    this.day2 = this.getDate(2);
-    this.day3 = this.getDate(3);
-    this.day4 = this.getDate(4);
-    this.day5 = this.getDate(5);
-    this.day6 = this.getDate(6);
-    this.day7 = this.getDate(7);
-    this.day8 = this.getDate(8);
-    this.day9 = this.getDate(9);
-    this.day10 = this.getDate(10);
-    this.day11 = this.getDate(11);
-    this.day12 = this.getDate(12);
-    this.day13 = this.getDate(13);
-    this.day14 = this.getDate(14);
+    for (let i = 0; i < 14; i++) {
+      this.day[i] = this.getDate(i);
 
+    }
 
-    //this.todayName = this.getDate(0).format('dddd');
-    //this.setdateArray();
     console.log(this.getDate(4));
-    //this.dateArray.push() this.getDate(4);
+
   }
 
   getDate(num) {
