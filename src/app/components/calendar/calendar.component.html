@@ -1,11 +1,14 @@
 <div class="calendar">
-  <table>
+  <table style="text-align: center;">
     <tr>
 
 
       <th *ngFor="let date of day">
-        <div style="  width:100px;height:25px;background:dimgrey;color:greenyellow">
-
+        <div style="  width:200px;height:25px;background:dimgrey;color:greenyellow">
+          {{date.format('YYYY')}}
+          {{date.format('MMMM')}}
+        </div>
+        <div style="  width:200px;height:25px;background:dimgrey;color:greenyellow">
           {{date.format('dddd')}}
         </div>
       </th>
@@ -13,12 +16,9 @@
 
     </tr>
     <tr>
-      <td>
-        <div
-          style="width:100px;height:60px;background-color: cornflowerblue ;padding: 10px; text-align: -moz-center; color:mediumblue; font-size: 25px">
-
-          {{day[0]}}
-
+      <td *ngFor="let date of day">
+        <div style="  width:200px;height:100px;background:cornflowerblue;color:mediumblue; font-size: 25px">
+          {{date.format('D')}}
         </div>
       </td>
     </tr>
