@@ -1,31 +1,55 @@
-<div>
+<div class="calendar">
   <table>
     <tr>
       <th>
-        <div style="  width:60px;height:25px;background:dimgrey;color:greenyellow">
-          {{todayName}}
+        <div style="  width:100px;height:25px;background:dimgrey;color:greenyellow">
+          {{today.format('dddd')}}
+        </div>
+      </th>
+      <th>
+        <div style="  width:100px;height:25px;background:dimgrey;color:greenyellow">
+          {{day1.format('dddd')}}
+        </div>
+      </th>
+      <th>
+        <div style="  width:100px;height:25px;background:dimgrey;color:greenyellow">
+          {{day2.format('dddd')}}
+        </div>
+      </th>
+      <th>
+        <div style="  width:100px;height:25px;background:dimgrey;color:greenyellow">
+          {{day3.format('dddd')}}
+        </div>
+      </th>
+      <th>
+        <div style="  width:100px;height:25px;background:dimgrey;color:greenyellow">
+          {{day4.format('dddd')}}
+        </div>
+      </th>
+      <th>
+        <div style="  width:100px;height:25px;background:dimgrey;color:greenyellow">
+          {{day5.format('dddd')}}
+        </div>
+      </th>
+      <th>
+        <div style="  width:100px;height:25px;background:dimgrey;color:greenyellow">
+          {{day6.format('dddd')}}
+        </div>
+      </th>
+      <th>
+        <div style="  width:100px;height:25px;background:dimgrey;color:greenyellow">
+          {{day7.format('dddd')}}
         </div>
       </th>
     </tr>
     <tr>
       <td>
-        <div style="width:60px;height:60px;background-color: cornflowerblue ;padding: 10px; text-align: -moz-center; color:mediumblue; font-size: 25px">
+        <div style="width:100px;height:60px;background-color: cornflowerblue ;padding: 10px; text-align: -moz-center; color:mediumblue; font-size: 25px">
 
-          {{today}}
-          {{dateArrays}}
-
-        </div>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <div style="width:60px;height:60px;background-color: cornflowerblue ;padding: 10px; text-align: -moz-center; color:mediumblue; font-size: 25px">
-
-          {{today}}
-
+          {{today.format('d')}}
 
         </div>
       </td>
     </tr>
-  </table>
+      </table>
 </div>
