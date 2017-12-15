@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 
+
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { SearchComponent } from './components/search/search.component';
@@ -30,6 +31,7 @@ const appRoutes: Routes = [
     FooterComponent,
     StylistComponent,
     CalendarComponent,
+
 
 
   ],

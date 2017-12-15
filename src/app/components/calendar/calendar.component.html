@@ -1,26 +1,42 @@
-<div class="calendar">
-  <table style="text-align: center;">
-    <tr>
+<form>
+  <div class="calendar">
+    <table style="text-align: center;">
+      <tr>
 
 
-      <th *ngFor="let date of day">
-        <div style="  width:200px;height:25px;background:dimgrey;color:greenyellow">
-          {{date.format('YYYY')}}
-          {{date.format('MMMM')}}
-        </div>
-        <div style="  width:200px;height:25px;background:dimgrey;color:greenyellow">
-          {{date.format('dddd')}}
-        </div>
-      </th>
+        <th *ngFor="let date of day">
+          <div style="  width:200px;height:25px;background:dimgrey;color:greenyellow">
+            {{date.format('YYYY')}}
+            {{date.format('MMMM')}}
+          </div>
+          <div style="  width:200px;height:25px;background:dimgrey;color:greenyellow">
+            {{date.format('dddd')}}
+          </div>
+        </th>
 
 
-    </tr>
-    <tr>
-      <td *ngFor="let date of day">
-        <div style="  width:200px;height:100px;background:cornflowerblue;color:mediumblue; font-size: 25px">
-          {{date.format('D')}}
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
+      </tr>
+      <tr>
+        <td *ngFor="let date of day">
+          <div style="  width:200px;height:100px;background:cornflowerblue;color:mediumblue; font-size: 20px">
+            {{date.format('D')}}
+            <table style="border-color: black">
+              <tr style="border-color: #cccccc">
+                <td>
+                  <button style=" height: 25px;width:190px;">Morning</button>
+                </td>
+              </tr>
+              <tr style="border-color: #cccccc">
+                <td>
+                  <button style="height: 25px;width:190px;">Evening</button>
+                </td>
+              </tr>
+
+            </table>
+          </div>
+        </td>
+      </tr>
+    </table>
+  </div>
+
+</form>
