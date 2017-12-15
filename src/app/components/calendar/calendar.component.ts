@@ -9,7 +9,7 @@ import {require} from '../../../test';
   styleUrls: ['./calendar.component.css']
 })
 export class CalendarComponent implements OnInit {
-  public date = moment(); //today
+  public date = moment(); /*today*/
   public daysArr;
   public weekArr;
 
@@ -24,15 +24,18 @@ export class CalendarComponent implements OnInit {
   }
 
   createCalendar(month) {
-    const moment = require('moment');
+    /*const moment = require('moment');*/
     const firstday = moment(month).startOf('M');
     const days = Array.apply(null, {length: month.daysInMonth()})
       .map(Number.call, Number);
-    //console.log(moment().weekday(-7));
+    /*console.log(moment().weekday(-7));
     // console.log(moment().weekday(0));
+      //console.log(nextday().date);
+    */
+
     console.log(moment());
     console.log(moment.day(1));
-    //console.log(nextday().date);
+
 
     return days;
 
