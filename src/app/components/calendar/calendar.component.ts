@@ -9,18 +9,31 @@ import * as moment from 'moment';
 })
 export class CalendarComponent implements OnInit {
 
-  public day: any[] = [];
+  public thisWeekDay: any[] = [];
+  public nextWeekDay: any[] = [];
+
+  //firstOfWeek: number;
 
   constructor() {
   }
 
   ngOnInit() {
 
-    for (let i = -1; i < 14; i++) {
-      this.day[i] = this.getDate(i);
+    const firstOfWeek = +moment().startOf('isoWeek').format('D');
+    const today = +moment().format('D');
+    const lastOfWeek = +moment().endOf('isoWeek').format('D');
 
+    for (let i = 0; i < 7; i++) {
+      this.thisWeekDay[i] = this.getDate(firstOfWeek - today + i);
+      console.log(this.thisWeekDay[i]);
     }
-    console.log(moment().startOf('isoWeek'));
+
+
+    for (let i = 0; i < 7; i++) {
+      this.nextWeekDay[i] = this.getDate(lastOfWeek - today + 1 + i);
+      console.log(lastOfWeek);
+    }
+
     // moment().endOf('isoWeek');
 
   }
@@ -29,6 +42,4 @@ export class CalendarComponent implements OnInit {
     return moment().add(num, 'days');
 
   }
-
-
 }

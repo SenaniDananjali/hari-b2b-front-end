@@ -1,3 +1,29 @@
 .calendar{
   padding-bottom: 10px;
 }
+table{
+border-radius: 15px;
+}
+td{
+  background: mediumpurple;
+}
+
+.calendarDateHeading{
+  width:150px;
+  height:55px;
+  background:#838349;
+  color:#0c13da;
+
+}
+.calendarDates{
+  width:150px;
+  height:100px;
+  background:#7af9b0;
+  color:mediumblue;
+
+
+}
+.calendarevents {
+   height: 25px;
+  width:50px
+}
