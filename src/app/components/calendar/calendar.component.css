@@ -21,7 +21,25 @@ td{
   background:#7af9b0;
   color:mediumblue;
 }
-.calendarevents {
-   height: 25px;
-  width:50px
+
+.calendarEvents {
+  height: 25px;
+  width:140px;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+  color: #fff;
+  background-color: #4CAF50;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
 }
+
+.calendarEvents:hover {background-color: #da4b55}
+
+.calendarEvents:active {
+  background-color: #da4b55;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+

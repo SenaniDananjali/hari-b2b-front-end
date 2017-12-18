@@ -1,8 +1,6 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import {BsDropdownModule} from 'ngx-bootstrap';
-import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { Ng2CarouselamosModule } from 'ng2-carouselamos';
 
 import {AppComponent} from './app.component';
@@ -40,8 +38,7 @@ const appRoutes: Routes = [
     Ng2CarouselamosModule,
     FormsModule,
     RouterModule.forRoot(appRoutes),
-    BsDropdownModule.forRoot(),
-    CarouselModule.forRoot(),
+
 
   ],
   providers: [DataService],

@@ -1,6 +1,11 @@
 import {Component, OnInit} from '@angular/core';
 import * as moment from 'moment';
 
+enum busyStates {
+
+  available = 0,
+  busy = 1,
+}
 
 @Component({
   selector: 'app-calendar',
@@ -12,7 +17,8 @@ export class CalendarComponent implements OnInit {
   public thisWeekDay: any[] = [];
   public nextWeekDay: any[] = [];
   public selectedSessions: any[] = [];
-
+  details: Details;
+  public slotDetails: Details[] = [];
 
   constructor() {
   }
@@ -25,14 +31,15 @@ export class CalendarComponent implements OnInit {
 
     for (let i = 0; i < 7; i++) {
       this.thisWeekDay[i] = this.setDate(firstOfWeek - today + i);
-      console.log(this.thisWeekDay[i]);
+      // console.log(this.thisWeekDay[i]);
     }
 
 
     for (let i = 0; i < 7; i++) {
       this.nextWeekDay[i] = this.setDate(lastOfWeek - today + 1 + i);
-      console.log(lastOfWeek);
+      //  console.log(lastOfWeek);
     }
+    // this.slotDetails.push({date: 'gfghfgh', stylistId: 4, stylistName: 'shen', state: busyStates.available});
 
     // moment().endOf('isoWeek');
 
@@ -45,7 +52,18 @@ export class CalendarComponent implements OnInit {
 
   makeBusy(busy) {
     console.log(busy);
-
+    // this.selectedSessions.push(busy);
+    // return console.log(this.busySlots);
+    // console.log(busy.valueOf());
 
   }
+}
+
+// to store the selected time slot details
+interface Details {
+  date: string;
+  stylistName: string;
+  stylistId: number;
+  state: number;
+
 }
