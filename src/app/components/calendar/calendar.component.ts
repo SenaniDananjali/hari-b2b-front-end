@@ -11,8 +11,8 @@ export class CalendarComponent implements OnInit {
 
   public thisWeekDay: any[] = [];
   public nextWeekDay: any[] = [];
+  public selectedSessions: any[] = [];
 
-  //firstOfWeek: number;
 
   constructor() {
   }
@@ -24,13 +24,13 @@ export class CalendarComponent implements OnInit {
     const lastOfWeek = +moment().endOf('isoWeek').format('D');
 
     for (let i = 0; i < 7; i++) {
-      this.thisWeekDay[i] = this.getDate(firstOfWeek - today + i);
+      this.thisWeekDay[i] = this.setDate(firstOfWeek - today + i);
       console.log(this.thisWeekDay[i]);
     }
 
 
     for (let i = 0; i < 7; i++) {
-      this.nextWeekDay[i] = this.getDate(lastOfWeek - today + 1 + i);
+      this.nextWeekDay[i] = this.setDate(lastOfWeek - today + 1 + i);
       console.log(lastOfWeek);
     }
 
@@ -38,8 +38,14 @@ export class CalendarComponent implements OnInit {
 
   }
 
-  getDate(num) {
+  setDate(num) {
     return moment().add(num, 'days');
+
+  }
+
+  makeBusy(busy) {
+    console.log(busy);
+
 
   }
 }

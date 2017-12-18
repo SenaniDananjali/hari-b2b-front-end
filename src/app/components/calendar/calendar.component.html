@@ -1,7 +1,7 @@
-<form >
+<form (submit)="makeBusy()">
   <div class="calendar" style="font-family:Serif; font-size: small">
     <table style="text-align: center;">
-      <tr  >
+      <tr>
         <td *ngFor="let date of thisWeekDay">
           <div class="calendarDateHeading">
             {{date.format('Y')}}
@@ -9,19 +9,26 @@
             {{date.format('dddd')}}
           </div>
 
-          <div class="calendarDates" >
+          <div class="calendarDates">
             {{date.format('D')}}
             <table style="border-color: black">
+
+
               <tr style="border-color: #cccccc">
+
                 <td>
-                  <button button class="calendarevents" >M</button>
+
+                  <button (click)="makeBusy(date.format('YYYY-MM-DD') +'  08.00 am to 12.00 Noon')">Morning</button>
+
+
                 </td>
               </tr>
               <tr style="border-color: #cccccc">
                 <td>
-                  <button button class="calendarevents" >E</button>
+                  <button (click)="makeBusy(date.format('YYYY-MM-DD') +'  01.00 pm to 05.00 pm')">Evening</button>
                 </td>
               </tr>
+
             </table>
           </div>
 
@@ -41,12 +48,13 @@
             <table style="border-color: black">
               <tr style="border-color: #cccccc">
                 <td>
-                  <button class="calendarevents ">Morning</button>
+                  <button (click)="makeBusy(date.format('YYYY-MM-DD') +'  08.00 am to 12.00 Noon')">Morning</button>
+
                 </td>
               </tr>
               <tr style="border-color: #cccccc">
                 <td>
-                  <button class="calendarevents">E</button>
+                  <button (click)="makeBusy(date.format('YYYY-MM-DD') +'  01.00 pm to 05.00 pm')">Evening</button>
                 </td>
               </tr>
             </table>
@@ -55,33 +63,35 @@
         </td>
       </tr>
     </table>
+    <h3>Your selected slots</h3>
+
   </div>
+</form>
 
-
-  <!--carousel>
-    <slide >
-      <img src="../../../assets/galery3.jpg" alt="First slide" style="display: block; width: 100%;">
-      <div class="carousel-caption d-none d-md-block">
-        <h3>First slide label</h3>
-        <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-      </div>
-    </slide>
-    <slide>
-      <img src="../../../assets/galery1.jpg" alt="Second slide" style="display: block; width: 100%;">
-      <div class="carousel-caption d-none d-md-block">
-        <h3>Second slide label</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-      </div>
-    </slide>
-    <slide>
-      <img src="../../../assets/galery2.jpg" alt="Third slide" style="display: block; width: 100%;">
-      <div class="carousel-caption d-none d-md-block">
-        <h3>Third slide label</h3>
-        <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-      </div>
-    </slide>
-  </carousel>
+<!--carousel>
+  <slide >
+    <img src="../../../assets/galery3.jpg" alt="First slide" style="display: block; width: 100%;">
+    <div class="carousel-caption d-none d-md-block">
+      <h3>First slide label</h3>
+      <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+    </div>
+  </slide>
+  <slide>
+    <img src="../../../assets/galery1.jpg" alt="Second slide" style="display: block; width: 100%;">
+    <div class="carousel-caption d-none d-md-block">
+      <h3>Second slide label</h3>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+    </div>
+  </slide>
+  <slide>
+    <img src="../../../assets/galery2.jpg" alt="Third slide" style="display: block; width: 100%;">
+    <div class="carousel-caption d-none d-md-block">
+      <h3>Third slide label</h3>
+      <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+    </div>
+  </slide>
+</carousel>
 
 -->
 
-</form>
+
