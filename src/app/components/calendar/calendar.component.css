@@ -1,47 +1,45 @@
 .calendar {
-  padding-bottom: 10px;
+
   font-family: Serif;
   font-size: small;
   border-radius: 5px;
   border:black;
-}
+  text-align: center;
+  padding: 10px;
 
-table {
-  border-radius: 15px;
-}
-
-td {
-  /*background: black;*/
 }
 
 .calendarDateHeading {
   width: 150px;
   height: 55px;
-  background: #838349;
-  color: #0c13da;
+  background: rgba(0,0,0,0.67);;
+  color: white ;
   text-align: center;
-
+  font-style: oblique;
+font-weight: bold;
 }
 
 .calendarDates {
   width: 150px;
   height: 100px;
-  background: #7af9b0;
-  color: mediumblue;
+  background:rgba(0,0,0,0.67);
+  color: white;
+  font-style: oblique;
 
 }
 
 .calendarEvents {
-  height: 25px;
+  height: 30px;
   width: 140px;
   text-align: center;
   cursor: pointer;
-  outline: none;
   color: #fff;
   background-color: #4CAF50;
-  border: none;
-  border-radius: 15px;
-  box-shadow: 0 9px #999;
+  border:black;
+  outline-color: red;
+
+
+
 }
 
 .calendarEvents:hover {
@@ -62,4 +60,30 @@ td {
 .dateRange{
  ;
   background-color: #666666;
+  padding: 5px;
+  height: 150px;
+}
+.circle{
+width: 100px;
+height: 30px;
+;
+
+}
+
+.ash {
+  background-color: rgba(29,26,28,0.58);
+}
+.green {
+  background-color:rgba(98,200,74,0.81);
+}
+.red {
+  background-color:rgba(200,21,22,0.81);
+}
+.blue{
+  background-color: rgba(84,97,218,0.58);
+}
+.calendarTop{
+  background-color:rgba(149,120,244,0.56)  ;
+  height:40px;
+  padding:5px;
 }

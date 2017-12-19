@@ -1,13 +1,21 @@
-<form (submit)="makeBusy()">
-
-  <div class="container">
+ <div class="container" >
+   <h3>Choose your Sessions</h3>
+   <div class="container calendarTop" >
+     <ul class="list-inline">
+       <li class="list-inline-item circle red"> Busy</li>
+       <li class="list-inline-item circle green">Selected</li>
+       <li class="list-inline-item circle ash">Available</li>
+       <li class="list-inline-item circle blue">Requested</li>
+     </ul>
+   </div>
     <div class="dateRange"
       ng2-carouselamos
-      [width]="1000"
+      [width]="1200"
       [items]="thisWeekDay"
       [$item]="itemTemplate"
       [$prev]="prevTemplate"
       [$next]="nextTemplate">
+      (onSelectedItem)="selectedItem = $event.item; selectedIndex = $event.index"
     </div>
 
 
@@ -39,10 +47,12 @@
                     (click)="makeBusy(date.format('YYYY-MM-DD') +'  08.00 am to 12.00 Noon')">Morning
             </button>
             <br>
+            <br>
             <button class="calendarEvents"
                     (click)="makeBusy(date.format('YYYY-MM-DD') +'  01.00 pm to 05.00 pm')">Evening
             </button>
           </div>
+
         </div>
 
 
@@ -50,4 +60,3 @@
     </ng-template>
   </div>
 
-</form>
