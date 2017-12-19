@@ -1,7 +1,7 @@
 <form (submit)="makeBusy()">
 
   <div class="container">
-    <div
+    <div class="dateRange"
       ng2-carouselamos
       [width]="1000"
       [items]="thisWeekDay"
@@ -12,48 +12,39 @@
 
 
     <ng-template #prevTemplate>
+      <button type="submit" style="border: 0; background: transparent">
       <img src="../../../assets/pre.png" style="width:50px;">
-
+      </button>
     </ng-template>
 
     <ng-template #nextTemplate>
-      <img src="../../../assets/next.png" style="width:50px">
+      <button type="submit" style="border: 0; background: transparent">
+        <img src="../../../assets/next.png" style="width:50px;">
+      </button>
     </ng-template>
 
-    <ng-template #itemTemplate >
-      <div class="calendar" style="font-family:Serif; font-size: small">
-        <table style="text-align: center;">
-          <tr>
-            <td *ngFor="let date of thisWeekDay">
-              <div class="calendarDateHeading image" style="min-width: 200px ;">
-                {{date.format('Y')}}
-                {{date.format('MMMM')}}
-                {{date.format('dddd')}}
-                <div class="calendarDates">
-                  {{date.format('D')}}
-                  <table style="border-color: black">
-                    <tr>
-                      <td>
-                        <button class="calendarEvents"
-                                (click)="makeBusy(date.format('YYYY-MM-DD') +'  08.00 am to 12.00 Noon')">Morning
-                        </button>
+    <ng-template #itemTemplate>
+      <div class="calendar image" *ngFor="let date of thisWeekDay">
 
-                      </td>
-                    </tr>
-                    <tr style="border-color: #cccccc">
-                      <td>
-                        <button class="calendarEvents"
-                                (click)="makeBusy(date.format('YYYY-MM-DD') +'  01.00 pm to 05.00 pm')">Evening
-                        </button>
-                      </td>
-                    </tr>
-                  </table>
-                </div>
-              </div>
+        <div class="calendarDateHeading">
+          {{date.format('Y')}}
+          {{date.format('MMMM')}}
+          <br>
+          {{date.format('dddd')}}
 
-            </td>
-          </tr>
-        </table>
+          <div class="calendarDates">
+            {{date.format('D')}}
+            <br>
+            <button class="calendarEvents"
+                    (click)="makeBusy(date.format('YYYY-MM-DD') +'  08.00 am to 12.00 Noon')">Morning
+            </button>
+            <br>
+            <button class="calendarEvents"
+                    (click)="makeBusy(date.format('YYYY-MM-DD') +'  01.00 pm to 05.00 pm')">Evening
+            </button>
+          </div>
+        </div>
+
 
       </div>
     </ng-template>
