@@ -20,7 +20,7 @@
       <img src="../../../assets/next.png" style="width:50px">
     </ng-template>
 
-    <ng-template #itemTemplate onM>
+    <ng-template #itemTemplate >
       <div class="calendar" style="font-family:Serif; font-size: small">
         <table style="text-align: center;">
           <tr>
@@ -29,8 +29,6 @@
                 {{date.format('Y')}}
                 {{date.format('MMMM')}}
                 {{date.format('dddd')}}
-
-
                 <div class="calendarDates">
                   {{date.format('D')}}
                   <table style="border-color: black">

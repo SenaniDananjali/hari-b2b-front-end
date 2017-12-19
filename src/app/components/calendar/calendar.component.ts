@@ -15,9 +15,7 @@ enum busyStates {
 export class CalendarComponent implements OnInit {
 
   public thisWeekDay: any[] = [];
-  //public nextWeekDay: any[] = [];
   public selectedSessions: any[] = [];
- // public test: any[] = [];
   details: Details;
   public slotDetails: Details[] = [];
 
