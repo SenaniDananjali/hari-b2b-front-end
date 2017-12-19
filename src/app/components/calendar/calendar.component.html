@@ -1,62 +1,73 @@
- <div class="container" >
-   <h3>Choose your Sessions</h3>
-   <div class="container calendarTop" >
-     <ul class="list-inline">
-       <li class="list-inline-item circle red"> Busy</li>
-       <li class="list-inline-item circle green">Selected</li>
-       <li class="list-inline-item circle ash">Available</li>
-       <li class="list-inline-item circle blue">Requested</li>
-     </ul>
-   </div>
-    <div class="dateRange"
-      ng2-carouselamos
-      [width]="1200"
-      [items]="thisWeekDay"
-      [$item]="itemTemplate"
-      [$prev]="prevTemplate"
-      [$next]="nextTemplate">
-      (onSelectedItem)="selectedItem = $event.item; selectedIndex = $event.index"
-    </div>
+<div class="container">
+  <h3>Choose your Sessions</h3>
+  <div class="container calendarTop">
+    <ul class="list-inline">
+      <li class="list-inline-item circle red"> Busy</li>
+      <li class="list-inline-item circle green">Selected</li>
+      <li class="list-inline-item circle ash">Available</li>
+      <li class="list-inline-item circle blue">Requested</li>
+    </ul>
+  </div>
+  <div class="dateRange"
+       ng2-carouselamos
+       [width]="1200"
+       [items]="thisWeekDay"
+       [$item]="itemTemplate"
+       [$prev]="prevTemplate"
+       [$next]="nextTemplate">
+    (onSelectedItem)="selectedItem = $event.item; selectedIndex = $event.index"
+  </div>
 
 
-    <ng-template #prevTemplate>
-      <button type="submit" style="border: 0; background: transparent">
+  <ng-template #prevTemplate>
+    <button type="submit" style="border: 0; background: transparent">
       <img src="../../../assets/pre.png" style="width:50px;">
-      </button>
-    </ng-template>
+    </button>
+  </ng-template>
 
-    <ng-template #nextTemplate>
-      <button type="submit" style="border: 0; background: transparent">
-        <img src="../../../assets/next.png" style="width:50px;">
-      </button>
-    </ng-template>
+  <ng-template #nextTemplate>
+    <button type="submit" style="border: 0; background: transparent">
+      <img src="../../../assets/next.png" style="width:50px;">
+    </button>
+  </ng-template>
 
-    <ng-template #itemTemplate>
-      <div class="calendar image" *ngFor="let date of thisWeekDay">
+  <ng-template #itemTemplate>
+    <div class="calendar image" *ngFor="let date of thisWeekDay">
 
-        <div class="calendarDateHeading">
-          {{date.format('Y')}}
-          {{date.format('MMMM')}}
+      <div class="calendarDateHeading">
+        {{date.format('Y')}}
+        {{date.format('MMMM')}}
+        <br>
+        {{date.format('dddd')}}
+
+        <div class="calendarDates">
+          {{date.format('D')}}
           <br>
-          {{date.format('dddd')}}
 
-          <div class="calendarDates">
-            {{date.format('D')}}
-            <br>
-            <button class="calendarEvents"
-                    (click)="makeBusy(date.format('YYYY-MM-DD') +'  08.00 am to 12.00 Noon')">Morning
-            </button>
-            <br>
-            <br>
-            <button class="calendarEvents"
-                    (click)="makeBusy(date.format('YYYY-MM-DD') +'  01.00 pm to 05.00 pm')">Evening
-            </button>
-          </div>
 
+          <button id="morningBtn" class="calendarEvents"
+                  (click)="makeBusy(date.format('YYYY-MM-DD') +'  08.00 am to 12.00 Noon')" value="0">Morning
+          </button>
+          <br>
+          <br>
+          <button class="calendarEvents"
+                  (click)="makeBusy(date.format('YYYY-MM-DD') +'  01.00 pm to 05.00 pm')">Evening
+          </button>
         </div>
 
-
       </div>
-    </ng-template>
+
+
+    </div>
+  </ng-template>
+  <div>
+    <h3>Your Bookings</h3>
+    <ul class="list-inline">
+      <li class="list-inline" *ngFor="let booking of slotDetails">
+        {{booking}}
+        <button (click)="deleteBusy(booking)">x</button>
+      </li>
+    </ul>
   </div>
+</div>
 

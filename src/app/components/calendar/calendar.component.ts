@@ -16,33 +16,26 @@ export class CalendarComponent implements OnInit {
 
   public thisWeekDay: any[] = [];
   public nextWeekDay: any[] = [];
-  public selectedSessions: any[] = [];
-  public test: any[] = [];
-  details: Details;
-  public slotDetails: Details[] = [];
+  public slotDetails: any[] = [];
 
   constructor() {
   }
 
   ngOnInit() {
-    this.test = ['dffff', 'dfdgg', 'ggffgg'];
     const firstOfWeek = +moment().startOf('isoWeek').format('D');
     const today = +moment().format('D');
     const lastOfWeek = +moment().endOf('isoWeek').format('D');
 
     for (let i = 0; i < 14; i++) {
       this.thisWeekDay[i] = this.setDate(firstOfWeek - today + i);
-      // console.log(this.thisWeekDay[i]);
-    }
 
+    }
 
     for (let i = 0; i < 7; i++) {
       this.nextWeekDay[i] = this.setDate(lastOfWeek - today + 1 + i);
-      //  console.log(lastOfWeek);
-    }
-    // this.slotDetails.push({date: 'gfghfgh', stylistId: 4, stylistName: 'shen', state: busyStates.available});
 
-    // moment().endOf('isoWeek');
+    }
+
 
   }
 
@@ -53,9 +46,27 @@ export class CalendarComponent implements OnInit {
 
   makeBusy(busy) {
     console.log(busy);
-    // this.selectedSessions.push(busy);
-    // return console.log(this.busySlots);
-    // console.log(busy.valueOf());
+    for (let i = 0; i < this.slotDetails.length; i++) {
+      if (busy === this.slotDetails[i]) {
+        console.log('deleted');
+        this.slotDetails.splice(i, 1);
+        return;
+      }
+    }
+    this.slotDetails.push(busy);
+    console.log('added');
+
+    // console.log(i);
+  }
+
+
+  deleteBusy(booking) {
+    console.log(booking);
+    for (let i = 0; i < this.slotDetails.length; i++) {
+      if (this.slotDetails[i] === booking) {
+        this.slotDetails.splice(i, 1);
+      }
+    }
 
   }
 }
