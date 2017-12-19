@@ -4,7 +4,7 @@
     <ul class="list-inline">
       <li class="list-inline-item circle red"> Busy</li>
       <li class="list-inline-item circle green">Selected</li>
-      <li class="list-inline-item circle ash">Available</li>
+      <li class="list-inline-item circle green">Available</li>
       <li class="list-inline-item circle blue">Requested</li>
     </ul>
   </div>
@@ -45,12 +45,15 @@
           <br>
 
           <li class="tg-list-item">
-            <input class="tgl tgl-flip" id="cbMng{{date.format('D')}}" type="checkbox" />
-            <label class="tgl-btn" data-tg-off="Nope" data-tg-on="Yeah!" for="cbMng{{date.format('D')}}"  (click)="makeBusy(date.format('YYYY-MM-DD') +'  08.00 am to 12.00 Noon')"></label>
+            <input class="tgl tgl-flip" id="cbMng{{date.format('D')}}" type="checkbox" checked [disabled]="true"/>
+            <label class="tgl-btn" data-tg-off="Available" data-tg-on="Busy" for="cbMng{{date.format('D')}}"
+                   (click)="makeBusy(date.format('YYYY-MM-DD') +'  08.00 am to 12.00 Noon')"></label>
+
           </li>
           <li class="tg-list-item">
-            <input class="tgl tgl-flip" id="cbEve{{date.format('D')}}" type="checkbox" />
-            <label class="tgl-btn" data-tg-off="Available" data-tg-on="Busy" for="cbEve{{date.format('D')}}"  (click)="makeBusy(date.format('YYYY-MM-DD') +'  01.00 pm to 05.00 pm')"></label>
+            <input class="tgl tgl-flip" id="cbEve{{date.format('D')}}" type="checkbox"/>
+            <label class="tgl-btn" data-tg-off="Available" data-tg-on="Selected" for="cbEve{{date.format('D')}}"
+                   (click)="makeBusy(date.format('YYYY-MM-DD') +'  01.00 pm to 05.00 pm')"></label>
           </li>
 
         </div>
@@ -65,9 +68,6 @@
     <ul class="list-inline">
       <li class="list-inline" *ngFor="let booking of slotDetails">
         {{booking}}
-        <button (click)="deleteBusy(booking)" style="border: 0; background: transparent">
-          <img src="../../../assets/cross.png" width="20px">
-        </button>
       </li>
     </ul>
   </div>

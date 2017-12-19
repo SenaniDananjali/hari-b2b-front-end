@@ -113,7 +113,7 @@ li {
 .tgl + .tgl-btn {
   outline: 0;
   display: block;
-  width: 10px;
+  width: 30px;
   height: 25px;
   position: relative;
   cursor: pointer;
@@ -163,8 +163,7 @@ li {
 }
 .tgl-flip + .tgl-btn:after {
   content: attr(data-tg-on);
-  background: rgba(200,21,22,0.81);
-
+  background: #02C66F;
   -webkit-transform: rotateY(-180deg);
   transform: rotateY(-180deg);
 }
@@ -184,7 +183,7 @@ li {
   -webkit-transform: rotateY(0);
   transform: rotateY(0);
   left: 0;
-  background: #7FC6A6;
+  background: rgba(200,21,22,0.81);
 }
 .tgl-flip:checked + .tgl-btn:active:after {
   -webkit-transform: rotateY(20deg);

@@ -17,6 +17,7 @@ export class CalendarComponent implements OnInit {
   public thisWeekDay: any[] = [];
   public nextWeekDay: any[] = [];
   public slotDetails: any[] = [];
+  selected = 'Selected';
 
   constructor() {
   }
@@ -74,8 +75,6 @@ export class CalendarComponent implements OnInit {
 // to store the selected time slot details
 interface Details {
   date: string;
-  stylistName: string;
-  stylistId: number;
   state: number;
 
 }
