@@ -1,122 +1,64 @@
 <form (submit)="makeBusy()">
-  <div class="calendar" style="font-family:Serif; font-size: small">
-    <table style="text-align: center;">
-      <tr>
 
-        <td *ngFor="let date of thisWeekDay">
-
-          <div class="calendarDateHeading">
-            {{date.format('Y')}}
-            {{date.format('MMMM')}}
-            {{date.format('dddd')}}
-          </div>
-
-          <div class="calendarDates">
-            {{date.format('D')}}
-            <table style="border-color: black">
+  <div class="container">
+    <div
+      ng2-carouselamos
+      [width]="1000"
+      [items]="thisWeekDay"
+      [$item]="itemTemplate"
+      [$prev]="prevTemplate"
+      [$next]="nextTemplate">
+    </div>
 
 
-              <tr style="border-color: #cccccc">
+    <ng-template #prevTemplate>
+      <img src="../../../assets/pre.png" style="width:50px;">
 
-                <td>
+    </ng-template>
 
-                  <button class="calendarEvents"
-                          (click)="makeBusy(date.format('YYYY-MM-DD') +'  08.00 am to 12.00 Noon')">Morning
-                  </button>
+    <ng-template #nextTemplate>
+      <img src="../../../assets/next.png" style="width:50px">
+    </ng-template>
 
-
-                </td>
-
-              </tr>
-              <tr style="border-color: #cccccc">
-                <td>
-                  <button class="calendarEvents"
-                          (click)="makeBusy(date.format('YYYY-MM-DD') +'  01.00 pm to 05.00 pm' )" value="0">Evening
-                  </button>
-                </td>
-              </tr>
-
-            </table>
-          </div>
+    <ng-template #itemTemplate onM>
+      <div class="calendar" style="font-family:Serif; font-size: small">
+        <table style="text-align: center;">
+          <tr>
+            <td *ngFor="let date of thisWeekDay">
+              <div class="calendarDateHeading image" style="min-width: 200px ;">
+                {{date.format('Y')}}
+                {{date.format('MMMM')}}
+                {{date.format('dddd')}}
 
 
-        </td>
-      </tr>
+                <div class="calendarDates">
+                  {{date.format('D')}}
+                  <table style="border-color: black">
+                    <tr>
+                      <td>
+                        <button class="calendarEvents"
+                                (click)="makeBusy(date.format('YYYY-MM-DD') +'  08.00 am to 12.00 Noon')">Morning
+                        </button>
 
-      <tr>
-        <td *ngFor="let date of nextWeekDay">
-          <div class="calendarDateHeading">
-            {{date.format('Y')}}
-            {{date.format('MMMM')}}
-            {{date.format('dddd')}}
-          </div>
+                      </td>
+                    </tr>
+                    <tr style="border-color: #cccccc">
+                      <td>
+                        <button class="calendarEvents"
+                                (click)="makeBusy(date.format('YYYY-MM-DD') +'  01.00 pm to 05.00 pm')">Evening
+                        </button>
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+              </div>
 
-          <div class="calendarDates">
-            {{date.format('D')}}
-            <table style="border-color: black">
-              <tr>
-                <td>
-                  <button class="calendarEvents"
-                          (click)="makeBusy(date.format('YYYY-MM-DD') +'  08.00 am to 12.00 Noon')">Morning
-                  </button>
+            </td>
+          </tr>
+        </table>
 
-                </td>
-              </tr>
-              <tr style="border-color: #cccccc">
-                <td>
-                  <button class="calendarEvents"
-                          (click)="makeBusy(date.format('YYYY-MM-DD') +'  01.00 pm to 05.00 pm')">Evening
-                  </button>
-                </td>
-              </tr>
-            </table>
-          </div>
-
-        </td>
-      </tr>
-    </table>
-    <h3>Your selected slots</h3>
-    <ul>
-      <li *ngFor="let slots of selectedSessions">
-        {{slots}}
-
-      </li>
-    </ul>
-
+      </div>
+    </ng-template>
   </div>
+
 </form>
-
-
-<div
-  ng2-carouselamos
-  [width]="500"
-
-  [$item]="itemTemplate"
-  [$prev]="prevTemplate"
-  [$next]="nextTemplate"
-  (onSelectedItem)="selectedItem = $event.item; selectedIndex = $event.index"
->
-
-</div>
-
-<div>
-  Current item selected
-</div>
-
-<ng-template #prevTemplate>
-  <i class="fa fa-chevron-left" aria-hidden="true"></i>
-
-</ng-template>
-
-<ng-template #nextTemplate>
-  <i class="fa fa-chevron-right" aria-hidden="true"></i>
-
-</ng-template>
-
-<ng-template let-item let-i="index" #itemTemplate>
-  <div style="min-width: 200px">
-    <b *ngIf="i ===6">{{i}}. {{thisWeekDay[i]}}</b>
-    <span *ngIf="i !== 3">{{i}}. {{thisWeekDay[i]}}</span>
-  </div>
-</ng-template>
-

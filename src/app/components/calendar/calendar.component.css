@@ -43,3 +43,6 @@ td{
   transform: translateY(4px);
 }
 
+.image{
+  height: 150px;
+}

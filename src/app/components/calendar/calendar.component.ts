@@ -15,8 +15,9 @@ enum busyStates {
 export class CalendarComponent implements OnInit {
 
   public thisWeekDay: any[] = [];
-  public nextWeekDay: any[] = [];
+  //public nextWeekDay: any[] = [];
   public selectedSessions: any[] = [];
+ // public test: any[] = [];
   details: Details;
   public slotDetails: Details[] = [];
 
@@ -24,24 +25,16 @@ export class CalendarComponent implements OnInit {
   }
 
   ngOnInit() {
-
+   // this.test = ['dffff', 'dfdgg', 'ggffgg'];
     const firstOfWeek = +moment().startOf('isoWeek').format('D');
     const today = +moment().format('D');
-    const lastOfWeek = +moment().endOf('isoWeek').format('D');
+//    const lastOfWeek = +moment().endOf('isoWeek').format('D');
 
-    for (let i = 0; i < 7; i++) {
+    for (let i = 0; i < 14; i++) {
       this.thisWeekDay[i] = this.setDate(firstOfWeek - today + i);
       // console.log(this.thisWeekDay[i]);
     }
 
-
-    for (let i = 0; i < 7; i++) {
-      this.nextWeekDay[i] = this.setDate(lastOfWeek - today + 1 + i);
-      //  console.log(lastOfWeek);
-    }
-    // this.slotDetails.push({date: 'gfghfgh', stylistId: 4, stylistName: 'shen', state: busyStates.available});
-
-    // moment().endOf('isoWeek');
 
   }
 
