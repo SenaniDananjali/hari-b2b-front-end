@@ -1,5 +1,5 @@
-<div class="container">
-  <h3>Choose your Sessions</h3>
+<div class="container booking">
+  <h3 align="center" style="color: rgba(248,255,139,0.76)">Choose your Sessions</h3>
   <div class="container calendarTop">
     <ul class="list-inline">
       <li class="list-inline-item circle red"> Busy</li>
@@ -62,18 +62,16 @@
 
     </div>
   </ng-template>
-  <div>
-    <h3>Your Bookings</h3>
-    <ul class="list-inline">
-      <li class="list-inline" *ngFor="let booking of slotDetails">
-        <table>
-          <tr>
-            {{booking}}
-          </tr>
-        </table>
+  <div class="container">
+    <h3 align="center" style="color: rgba(248,255,139,0.76)">Your Bookings</h3>
+    <table class="container">
+      <tr class="container" *ngFor="let booking of slotDetails" >
+        <td class="container" style="text-align: center">
+          {{booking}}
+        </td>
+      </tr>
+    </table>
 
-      </li>
-    </ul>
   </div>
 </div>
 
