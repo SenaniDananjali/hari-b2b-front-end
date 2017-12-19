@@ -3,9 +3,8 @@
   <div class="container calendarTop">
     <ul class="list-inline">
       <li class="list-inline-item circle red"> Busy</li>
-      <li class="list-inline-item circle green">Selected</li>
       <li class="list-inline-item circle green">Available</li>
-      <li class="list-inline-item circle blue">Requested</li>
+
     </ul>
   </div>
   <div class="dateRange"
@@ -67,7 +66,12 @@
     <h3>Your Bookings</h3>
     <ul class="list-inline">
       <li class="list-inline" *ngFor="let booking of slotDetails">
-        {{booking}}
+        <table>
+          <tr>
+            {{booking}}
+          </tr>
+        </table>
+
       </li>
     </ul>
   </div>
