@@ -5,17 +5,40 @@
 
   <div class="text-center">
     <div>
-      <input type="radio" name="searchType" checked [(ngModel)]="radioData" value="Stylist name" >Search by Name
-      <input type="radio" name="searchType"  [(ngModel)]="radioData" value="Stylist skill" >Search by Skills
+      <input type="radio" name="searchType" checked [(ngModel)]="radioData" value="Stylist name">Search by Name
+      <input type="radio" name="searchType" [(ngModel)]="radioData" value="Stylist skill">Search by Skills
     </div>
     <div>
 
-      <input  type="text" #search placeholder="Search your stylist by {{radioData}}" style="width:500px">
+      <div *ngIf="(radioData==='Stylist name')">
+        <input #search  placeholder="Search your stylist by Stylist Name " list="suggestions_name" style="width:500px" >
+        <datalist id="suggestions_name">
+          <option value="Joana">
+          <option value="Joseph">
+          <option value="Manie">
+          <option value="Stefni">
+          <option value="Bill">
+          <option value="Ashka">
+        </datalist>
+      </div>
+      <div *ngIf="(radioData==='Stylist skill')" style="width:500px">
+        <input   placeholder="Search your stylist by Stylist Name "  list="suggestions_name" style="width:500px">
+        <datalist id="suggestions_skill">
+          <option value="Hair Coloring">
+          <option value="Hair Styling">
+          <option value="Perming">
+          <option value="Relaxing">
+          <option value="Hair dressing">
+          <option value="Hair Coloring half">
+        </datalist>
+      </div>
 
     </div>
 
   </div>
-
+  <div class="advancedSearch">
+    <button>advanced Search</button>
+  </div>
 
 </form>
 

@@ -59,18 +59,8 @@ export class CalendarComponent implements OnInit {
 
     // console.log(i);
   }
-
-
-  deleteBusy(booking) {
-    console.log(booking);
-    for (let i = 0; i < this.slotDetails.length; i++) {
-      if (this.slotDetails[i] === booking) {
-        this.slotDetails.splice(i, 1);
-      }
-    }
-
-  }
 }
+
 
 // to store the selected time slot details
 interface Details {

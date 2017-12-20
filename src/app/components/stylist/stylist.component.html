@@ -1,52 +1,69 @@
-<div class="back container">
-  <img class="profile" src="../../../assets/profile.jpg" alt="profile" width="300" height="300">
+<div class="back">
+  <div class="container">
 
-  <div>
-    <img class="ratings" src="../../../assets/ratings4.png" style="width:110px">
-  </div>
+    <div class=" pt-2 pb-2 ">
+      <div class="col-sm-3 d-inline">
+        <img class="profile" src="../../../assets/sty_prof.jpg" alt="profile" width="150" height="150">
+      </div>
+      <div class=" col-sm-9 d-inline">
+        <table >
+          <tr>
+            <td class="skill-list">
+              <img class="ratings" src="../../../assets/ratings4.png" style="width:110px">
+            </td>
+          </tr>
+          <tr *ngFor="let sk of skills">
+            <td class="skill-list">{{sk}}</td>
+          </tr>
+          <tr>
+            <td class="skill-list">
+              {{amount}} {{currency}} per Half Day
+            </td>
+          </tr>
+        </table>
 
-  <div class="skills">
-    <ul>
-      <li *ngFor="let sk of skills">{{sk}}</li>
-      <h4>{{amount}} {{currency}} per Half Day</h4>
-    </ul>
-
-  </div>
-  <div class="d-flex">
-
-
-    <div class="gallery">
-      <img src={{galleryPath[0]}} alt="Fjords" width="300" height="200">
-
-    </div>
-
-    <div class="gallery">
-      <img src={{galleryPath[1]}} alt="Forest" width="300" height="200">
-
-    </div>
-
-
-    <div class="gallery">
-      <img src={{galleryPath[3]}} alt="Mountains" width="300" height="200">
-
-    </div>
-    <div class="gallery">
-      <img src={{galleryPath[4]}} alt="Mountains" width="300" height="200">
-
-    </div>
-    <div class="gallery">
-      <img src={{galleryPath[6]}} alt="Mountains" width="300" height="200">
-
-    </div>
-    <div class="gallery">
-      <img src={{galleryPath[5]}} alt="Mountains" width="300" height="200">
-
+      </div>
     </div>
   </div>
+  <div class="all_gallery">
+    <div class="d-flex  container pt-2 pb-2">
 
 
-</div>
-<div class="container">
+      <div class="gallery">
+        <img src={{galleryPath[0]}} width="300" height="200">
 
-  <app-calendar></app-calendar>
+      </div>
+
+      <div class="gallery">
+        <img src={{galleryPath[1]}} width="300" height="200">
+
+      </div>
+
+
+      <div class="gallery">
+        <img src={{galleryPath[3]}} width="300" height="200">
+
+      </div>
+      <div class="gallery">
+        <img src={{galleryPath[4]}} width="300" height="200">
+
+      </div>
+      <div class="gallery">
+        <img src={{galleryPath[6]}} width="300" height="200">
+
+      </div>
+      <div class="gallery">
+        <img src={{galleryPath[5]}} width="300" height="200">
+
+      </div>
+    </div>
+
+  </div>
+  <div class="calendar-background">
+
+    <div class="container pt-3">
+
+      <app-calendar></app-calendar>
+    </div>
+  </div>
 </div>

@@ -14,7 +14,6 @@ export class SearchComponent implements OnInit {
   selected: boolean;
 
   constructor() {
-    console.log('constructure runs...');
   }
 
   ngOnInit() {
@@ -23,8 +22,9 @@ export class SearchComponent implements OnInit {
 
 
   onSearch(search) {
+
     console.log(search);
     console.log(this.radioData);
-    return false;
+
   }
 }

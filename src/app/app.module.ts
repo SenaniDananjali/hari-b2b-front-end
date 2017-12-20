@@ -2,8 +2,8 @@ import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {Ng2CarouselamosModule} from 'ng2-carouselamos';
-// import {ZtwCarouselComponent} from 'angular2-carousel-ztw/ztw-carousel/ztw-carousel.component';
-// import {CarouselModule} from 'angular2-carousel-ztw/carousel.module';
+import {HttpClientModule} from '@angular/common/http';
+
 import {AppComponent} from './app.component';
 import {HeaderComponent} from './components/header/header.component';
 import {SearchComponent} from './components/search/search.component';
@@ -17,6 +17,7 @@ import {RouterModule, Routes} from '@angular/router';
 import {CalendarComponent} from './components/calendar/calendar.component';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {MatButtonModule, MatCheckboxModule} from '@angular/material';
+
 
 const appRoutes: Routes = [
   {path: '', component: CardsComponent},
@@ -32,7 +33,7 @@ const appRoutes: Routes = [
     FooterComponent,
     StylistComponent,
     CalendarComponent,
-    // ZtwCarouselComponent
+
 
   ],
   imports: [
@@ -42,8 +43,7 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
     MatButtonToggleModule,
     MatButtonModule, MatCheckboxModule,
-    // CarouselModule
-
+    HttpClientModule,
   ],
   providers: [DataService],
   bootstrap: [AppComponent]

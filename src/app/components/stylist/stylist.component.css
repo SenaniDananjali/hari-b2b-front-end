@@ -11,8 +11,10 @@ img{
 
 }
 .back{
-  background-color: lightsteelblue;
+  background-color:rgba(0,0,0,0.6);
   text-align: center;
+  background-size: cover;
+  /*background-image: url("../../../assets/background_sty.jpg");*/
 }
 
 
@@ -29,3 +31,30 @@ div.gallery img {
   height: 100%;
 }
 
+table {
+  border-collapse: collapse;
+  width: 100%;
+  padding:10px;
+}
+
+
+
+tr:nth-child(even) {
+  /*background-color:rgba(122,49,96,0.45);*/
+  color: black;
+  font-style: italic;
+}
+tr:nth-child(odd) {
+  /*background-color:rgba(120,122,35,0.45);*/
+  color:black;
+  font-style: italic;
+}
+.all_gallery{
+  background-color: rgba(70,17,131,0.78);
+}
+.calendar-background{
+  background-color: rgba(8,5,20,0.77);
+}
+.skill-list {
+  border-bottom: 1px solid #ddd;
+}

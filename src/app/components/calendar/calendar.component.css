@@ -12,7 +12,7 @@
 .calendarDateHeading {
   width: 150px;
   height: 55px;
-  background: rgba(0,0,0,0.67);;
+  background: rgba(0,0,0,1);;
   color: white ;
   text-align: center;
   font-style: oblique;
@@ -21,8 +21,8 @@ font-weight: bold;
 
 .calendarDates {
   width: 150px;
-  height: 100px;
-  background:rgba(0,0,0,0.67);
+  height: 150px;
+  background:rgba(0,0,0,1);
   color: white;
   font-style: oblique;
 
@@ -51,22 +51,28 @@ font-weight: bold;
   box-shadow: 0 5px #666;
   transform: translateY(4px);
 }
+.calendarTop{
+  background-color:rgba(149,120,244,1)  ;
+  height:40px;
+  padding:5px;
+}
 
 .image {
-  height: 140px;
+  height: 200px;
   padding: 5px;
 }
 
 .dateRange{
  ;
-  background-color:rgba(26,65,101,0.79);
+  background-color:rgba(26,65,101,1);
   padding: 5px;
   height: 150px;
 }
 .booking{
-  background-color:rgba(8,5,20,0.77);
+  background-color:rgba(25,10,50,0.78);
   padding :5px;
   max-height: max-content;
+
 
 }
 
@@ -78,22 +84,18 @@ height: 30px;
 }
 
 .ash {
-  background-color: rgba(29,26,28,0.58);
+  background-color: rgba(29,26,28,1);
 }
 .green {
-  background-color:rgba(98,200,74,0.81);
+  background-color:rgba(98,200,74,1);
 }
 .red {
-  background-color:rgba(200,21,22,0.81);
+  background-color:rgba(200,21,22,1);
 }
 .blue{
-  background-color: rgba(84,97,218,0.58);
+  background-color: rgba(84,97,218,1);
 }
-.calendarTop{
-  background-color:rgba(149,120,244,0.56)  ;
-  height:40px;
-  padding:5px;
-}
+
 html,
 
 ul,
@@ -210,6 +212,9 @@ th, td {
 tr:nth-child(even) {background-color:rgba(18,31,50,0.65);
   color: white;
 }
-tr:nth-child(odd) {background-color:transparent;
+tr:nth-child(odd) {background-color:rgba(0,0,0,1);
   color:white;
+}
+li{
+  background-color:rgba(80,61,105,0.23);
 }
