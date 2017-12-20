@@ -31,7 +31,7 @@
   </ng-template>
 
   <ng-template #itemTemplate>
-    <div class="calendar image" *ngFor="let date of thisWeekDay">
+    <div class="calendar image " *ngFor="let date of thisWeekDay ">
 
       <div class="calendarDateHeading">
         {{date.format('Y')}}
@@ -50,7 +50,7 @@
 
           </li>
           <li class="tg-list-item">
-            <input class="tgl tgl-flip" id="cbEve{{date.format('D')}}" type="checkbox"/>
+            <input class="tgl tgl-flip " id="cbEve{{date.format('D')}}" type="checkbox"/>
             <label class="tgl-btn" data-tg-off="Available" data-tg-on="Selected" for="cbEve{{date.format('D')}}"
                    (click)="makeBusy(date.format('YYYY-MM-DD') +'  01.00 pm to 05.00 pm')"></label>
           </li>
@@ -58,6 +58,7 @@
         </div>
 
       </div>
+
 
 
     </div>
