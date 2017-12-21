@@ -27,7 +27,7 @@ export class CalendarComponent implements OnInit {
     const today = +moment().format('D');
     const lastOfWeek = +moment().endOf('isoWeek').format('D');
 
-    for (let i = 0; i < 21; i++) {
+    for (let i = 0; i < 70; i++) {
       this.thisWeekDay[i] = this.setDate(firstOfWeek - today + i);
 
     }

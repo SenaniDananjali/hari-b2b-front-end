@@ -50,11 +50,15 @@ tr:nth-child(odd) {
   font-style: italic;
 }
 .all_gallery{
-  background-color: rgba(70,17,131,0.78);
+  background-color: rgba(8,5,20,0.77);
 }
 .calendar-background{
   background-color: rgba(8,5,20,0.77);
 }
 .skill-list {
   border-bottom: 1px solid #ddd;
+  color:white ;
+}
+p{
+  font-size: 14px;
 }
