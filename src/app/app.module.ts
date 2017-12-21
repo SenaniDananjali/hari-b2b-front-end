@@ -16,12 +16,16 @@ import {StylistComponent} from './components/stylist/stylist.component';
 import {RouterModule, Routes} from '@angular/router';
 import {CalendarComponent} from './components/calendar/calendar.component';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
-import {MatButtonModule, MatCheckboxModule} from '@angular/material';
-
+import {MatButtonModule, MatCheckboxModule, MatFormFieldModule, MatInputModule, MatNativeDateModule} from '@angular/material';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {AdvancedsearchComponent} from './components/advancedsearch/advancedsearch.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 const appRoutes: Routes = [
   {path: '', component: CardsComponent},
   {path: 'stylist', component: StylistComponent},
+  // {path: '', component: SearchComponent},
+  {path: 'advancedSearch', component: AdvancedsearchComponent}
 ];
 
 @NgModule({
@@ -33,6 +37,7 @@ const appRoutes: Routes = [
     FooterComponent,
     StylistComponent,
     CalendarComponent,
+    AdvancedsearchComponent,
 
 
   ],
@@ -44,6 +49,11 @@ const appRoutes: Routes = [
     MatButtonToggleModule,
     MatButtonModule, MatCheckboxModule,
     HttpClientModule,
+    MatDatepickerModule,
+    MatFormFieldModule,
+    MatNativeDateModule,
+    MatInputModule,
+    BrowserAnimationsModule,
   ],
   providers: [DataService],
   bootstrap: [AppComponent]

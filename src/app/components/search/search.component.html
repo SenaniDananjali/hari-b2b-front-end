@@ -1,17 +1,20 @@
-<form (submit)="onSearch(search.value)">
-  <div><h2 style="font-style: oblique">Search Stylists for your need</h2>
+<form (submit)="onSearch()">
+  <div></div>
+  <div>
+    <h2 style="font-style: oblique">Search Stylists for your need</h2>
   </div>
 
 
-  <div class="text-center">
+  <div class="text-center p-2">
     <div>
       <input type="radio" name="searchType" checked [(ngModel)]="radioData" value="Stylist name">Search by Name
       <input type="radio" name="searchType" [(ngModel)]="radioData" value="Stylist skill">Search by Skills
     </div>
     <div>
 
-      <div *ngIf="(radioData==='Stylist name')">
-        <input #search  placeholder="Search your stylist by Stylist Name " list="suggestions_name" style="width:500px" >
+      <div *ngIf="(radioData==='Stylist name') ">
+        <label class="col-lg-3">Search your stylist by {{radioData}} </label>
+        <input list="suggestions_name" style="width:500px" [(ngModel)]="search" [ngModelOptions]="{standalone: true}">
         <datalist id="suggestions_name">
           <option value="Joana">
           <option value="Joseph">
@@ -21,8 +24,10 @@
           <option value="Ashka">
         </datalist>
       </div>
-      <div *ngIf="(radioData==='Stylist skill')" style="width:500px">
-        <input   placeholder="Search your stylist by Stylist Name "  list="suggestions_name" style="width:500px">
+      <div *ngIf="(radioData==='Stylist skill')">
+        <label class="col-lg-3">Search your stylist by {{radioData}} </label>
+        <input list="suggestions_skill" style="width:500px" [(ngModel)]="search" [ngModelOptions]="{standalone: true}">
+
         <datalist id="suggestions_skill">
           <option value="Hair Coloring">
           <option value="Hair Styling">
@@ -36,9 +41,17 @@
     </div>
 
   </div>
-  <div class="advancedSearch">
-    <button>advanced Search</button>
-  </div>
 
 </form>
+<div class="row">
+  <div class="col-lg-9"></div>
+  <div class="advancedSearch col-lg-3 col-lg-offset-9 ">
+
+
+    <button class="adva-search p-0.5 " routerLink="/advancedSearch">Advanced Search</button>
+  </div>
+
+
+</div>
+
 

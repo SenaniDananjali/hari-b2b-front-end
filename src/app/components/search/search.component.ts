@@ -1,6 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {DataService} from '../../services/data.service';
-import {selector} from 'rxjs/operator/publish';
 
 @Component({
   selector: 'app-search',
@@ -12,6 +10,7 @@ export class SearchComponent implements OnInit {
   radioData = 'Stylist name';
 
   selected: boolean;
+  search = ' ';
 
   constructor() {
   }
@@ -21,10 +20,15 @@ export class SearchComponent implements OnInit {
   }
 
 
-  onSearch(search) {
+  onSearch() {
 
-    console.log(search);
-    console.log(this.radioData);
+    console.log(this.search);
+    // console.log($event);
+    // console.log(this.radioData);
+
+  }
+
+  advancedSearch() {
 
   }
 }
