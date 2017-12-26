@@ -8,18 +8,15 @@ import {Component, OnInit} from '@angular/core';
 export class AdvancedsearchComponent implements OnInit {
   from;
   to;
-
+  skills: any[] = ['Hair Dressing', 'Hair Coloring', 'Perming', 'men/women hair cutting', 'Relaxing', 'Extensions', 'Makeup', 'Freehand'];
 
   constructor() {
   }
 
   ngOnInit() {
     // console.log(this.date);
+    this.skills = ['Hair Dressing', 'Hair Coloring', 'Perming', 'men/women hair cutting'];
   }
 
-  hello() {
-    console.log('hello');
-    //this.d = 'my value is changed';
-  }
 
 }

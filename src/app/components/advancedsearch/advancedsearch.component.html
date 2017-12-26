@@ -1,26 +1,41 @@
-<div>
+<div class=" pt-2 pb-2 row ">
+  <div class="container date-range col-lg-5">
 
-  <mat-form-field>
-    <input matInput [matDatepicker]="picker" placeholder="From " [(ngModel)]="from">
-    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-    <mat-datepicker #picker>
+    <mat-form-field>
+      <input matInput [matDatepicker]="picker" placeholder="From " [(ngModel)]="from">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker>
 
-    </mat-datepicker>
+      </mat-datepicker>
 
-  </mat-form-field>
-  <br>
-  <button>{{from | date:'fullDate'}}</button>
-  <br>
-  <mat-form-field>
-    <input matInput [matDatepicker]="picker2" placeholder="To" [(ngModel)]="to">
-    <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
-    <mat-datepicker #picker2>
+    </mat-form-field>
+    <br>
+    <button class="date">{{from | date:'fullDate'}}</button>
+    <br>
+    <mat-form-field>
+      <input matInput [matDatepicker]="picker2" placeholder="To" [(ngModel)]="to">
+      <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+      <mat-datepicker #picker2>
 
-    </mat-datepicker>
+      </mat-datepicker>
 
-  </mat-form-field>
-  <br>
-  <button>{{to | date:'fullDate'}}</button>
+    </mat-form-field>
+    <br>
+    <button class="date">{{to | date:'fullDate'}}</button>
 
 
+  </div>
+  <div class="skills col-lg-5">
+
+    <h3>Skills</h3>
+    <tr *ngFor="let sk of skills">
+      <td class="skill-list">
+        <input type="checkbox">{{sk}}
+      </td>
+    </tr>
+
+  </div>
+  <div class="col-lg-2">
+    <button type="submit">Search</button>
+  </div>
 </div>
