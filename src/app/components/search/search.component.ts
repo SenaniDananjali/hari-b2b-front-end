@@ -45,6 +45,6 @@ export class SearchComponent implements OnInit {
 
 interface Posts {
   id: number;
-  firstName: string;
-  lastName: string;
+  first_name: string;
+  last_name: string;
 }

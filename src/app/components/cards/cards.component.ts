@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import 'rxjs/add/operator/map';
 
 @Component({
   selector: 'app-cards',

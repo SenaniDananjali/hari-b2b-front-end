@@ -6,7 +6,7 @@ import 'rxjs/add/operator/map';
 export class DataService {
 
   constructor(public http: Http) {
-    console.log('hello');
+    console.log('data service runs...');
 
   }
 
