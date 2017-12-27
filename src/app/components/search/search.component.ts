@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {DataService} from '../../services/data.service';
 
 @Component({
   selector: 'app-search',
@@ -7,28 +8,43 @@ import {Component, OnInit} from '@angular/core';
 })
 export class SearchComponent implements OnInit {
 
+  posts: Posts[];
+
+  constructor(private dataService: DataService) {
+
+  }
+
   radioData = 'Stylist name';
 
   selected: boolean;
   search = ' ';
 
-  constructor() {
-  }
 
   ngOnInit() {
     this.selected = true;
+
+
   }
 
 
   onSearch() {
 
     console.log(this.search);
-    // console.log($event);
-    // console.log(this.radioData);
+    this.dataService.getPosts().subscribe((posts) => {
+      this.posts = posts;
+      console.log(posts);
+    });
 
   }
 
   advancedSearch() {
 
   }
+
+}
+
+interface Posts {
+  id: number;
+  firstName: string;
+  lastName: string;
 }

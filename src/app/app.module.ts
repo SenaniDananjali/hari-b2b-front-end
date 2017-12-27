@@ -2,7 +2,7 @@ import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {Ng2CarouselamosModule} from 'ng2-carouselamos';
-import {HttpClientModule} from '@angular/common/http';
+import {HttpModule} from '@angular/http';
 
 import {AppComponent} from './app.component';
 import {HeaderComponent} from './components/header/header.component';
@@ -20,6 +20,7 @@ import {MatButtonModule, MatCheckboxModule, MatFormFieldModule, MatInputModule, 
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {AdvancedsearchComponent} from './components/advancedsearch/advancedsearch.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+
 
 const appRoutes: Routes = [
   {path: '', component: CardsComponent},
@@ -48,12 +49,13 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
     MatButtonToggleModule,
     MatButtonModule, MatCheckboxModule,
-    HttpClientModule,
+    HttpModule,
     MatDatepickerModule,
     MatFormFieldModule,
     MatNativeDateModule,
     MatInputModule,
     BrowserAnimationsModule,
+    BrowserModule,
   ],
   providers: [DataService],
   bootstrap: [AppComponent]
