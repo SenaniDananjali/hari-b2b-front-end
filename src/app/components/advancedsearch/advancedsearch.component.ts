@@ -8,7 +8,8 @@ import {Component, OnInit} from '@angular/core';
 export class AdvancedsearchComponent implements OnInit {
   from;
   to;
-  skills: any[] = ['Hair Dressing', 'Hair Coloring', 'Perming', 'men/women hair cutting', 'Relaxing', 'Extensions', 'Makeup', 'Freehand'];
+  skills: any[];
+  location: any[];
 
   constructor() {
   }
@@ -16,6 +17,7 @@ export class AdvancedsearchComponent implements OnInit {
   ngOnInit() {
     // console.log(this.date);
     this.skills = ['Hair Dressing', 'Hair Coloring', 'Perming', 'men/women hair cutting'];
+    this.location = ['Sydney', 'Kingston', 'Perth'];
   }
 
 

@@ -21,6 +21,7 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {AdvancedsearchComponent} from './components/advancedsearch/advancedsearch.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ParallaxComponent} from './components/parallax/parallax.component';
+import {SafeHtmlPipe} from './safe-html.pipe';
 
 
 const appRoutes: Routes = [
@@ -41,6 +42,7 @@ const appRoutes: Routes = [
     CalendarComponent,
     AdvancedsearchComponent,
     ParallaxComponent,
+    SafeHtmlPipe,
 
 
   ],

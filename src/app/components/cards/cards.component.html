@@ -1,15 +1,36 @@
-<div class="allCards container" style="position:relative;z-index: 50">
-  <ul>
-    <li *ngFor="let name of names">
-      <div class="card">
-        <img src="../../../assets/prof_girl.jpg" alt="Joana" style="width:100%">
-        <h4>{{name.first_name}} {{name.last_name}}</h4>
-        <p class="title">Hair Stylist</p>
-        <p>Styling for Women / Men</p>
-        <p><a class="button" href="/stylist">Book</a></p>
+<!--<div class="allCards container" style="position:relative;z-index: 50">-->
+<!--<ul>-->
+<!--<li>-->
+<!--<div *ngFor="let name of names ">-->
+<!--<div class="card" *ngFor="let gal of gallery">-->
+<!--<img *ngIf="name.id==gal.id" [src]="gal.image_path" [alt]="gal.image_path" style="width:100%">-->
+<!--<h4>{{name.first_name}} {{name.last_name}}</h4>-->
+<!--<p class="title">Hair Stylist</p>-->
+<!--<p>Styling for Women / Men</p>-->
+<!--<p><a class="button" href="/stylist">Book</a></p>-->
 
-      </div>
-    </li>
+<!--</div>-->
+<!--</div>-->
+<!--</li>-->
 
-  </ul>
+<!--</ul>-->
+<!--</div>-->
+
+<div *ngFor="let name of names " style="position:relative;z-index: 50">
+  <div class="allCards container" *ngFor="let gal of gallery">
+    <div class="card" *ngIf="name.id==gal.id">
+      <ul>
+        <li *ngIf="name.id==gal.id">
+
+          <img src="data:image/jpg;base64,{{gal.image_path}}" style="width:100%">
+          <h4>{{name.first_name}} {{name.last_name}}</h4>
+          <p class="title">Hair Stylist</p>
+          <p>Styling for Women / Men</p>
+          <p><a class="button" href="/stylist">Book</a></p>
+
+        </li>
+      </ul>
+    </div>
+
+  </div>
 </div>

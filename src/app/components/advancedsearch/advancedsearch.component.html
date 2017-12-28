@@ -1,41 +1,56 @@
-<div class=" pt-2 pb-2 row ">
-  <div class="container date-range col-lg-5">
+<div class="container">
 
-    <mat-form-field>
-      <input matInput [matDatepicker]="picker" placeholder="From " [(ngModel)]="from">
-      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-      <mat-datepicker #picker>
+  <div class=" pt-2 pb-2 row " style=" margin-top: 150px;">
+    <div class=" coloumn col-lg-4">
 
-      </mat-datepicker>
+      <mat-form-field>
+        <input matInput [matDatepicker]="picker" placeholder="From " [(ngModel)]="from">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker>
 
-    </mat-form-field>
-    <br>
-    <button class="date">{{from | date:'fullDate'}}</button>
-    <br>
-    <mat-form-field>
-      <input matInput [matDatepicker]="picker2" placeholder="To" [(ngModel)]="to">
-      <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
-      <mat-datepicker #picker2>
+        </mat-datepicker>
 
-      </mat-datepicker>
+      </mat-form-field>
+      <br>
+      <button class="date">{{from | date:'fullDate'}}</button>
+      <br>
+      <mat-form-field>
+        <input matInput [matDatepicker]="picker2" placeholder="To" [(ngModel)]="to">
+        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+        <mat-datepicker #picker2>
 
-    </mat-form-field>
-    <br>
-    <button class="date">{{to | date:'fullDate'}}</button>
+        </mat-datepicker>
+
+      </mat-form-field>
+      <br>
+      <button class="date">{{to | date:'fullDate'}}</button>
 
 
-  </div>
-  <div class="skills col-lg-5">
+    </div>
 
-    <h3>Skills</h3>
-    <tr *ngFor="let sk of skills">
-      <td class="skill-list">
-        <input type="checkbox">{{sk}}
-      </td>
-    </tr>
 
-  </div>
-  <div class="col-lg-2">
-    <button type="submit">Search</button>
+    <div class="coloumn col-lg-4">
+
+      <h3>Skills</h3>
+      <tr *ngFor="let sk of skills">
+        <td class="skill-list">
+          <input type="checkbox">{{sk}}
+        </td>
+      </tr>
+
+    </div>
+
+    <div class="coloumn col-lg-4">
+      <h3>Job Location</h3>
+      <tr *ngFor="let loc of location">
+        <td class="skill-list">
+          <input type="checkbox">{{loc}}
+        </td>
+      </tr>
+
+    </div>
+    <div class="col-lg-2 container mt-1">
+      <button class="btn btn-sm btn-secondary font-weight-bold" type="submit">Search</button>
+    </div>
   </div>
 </div>

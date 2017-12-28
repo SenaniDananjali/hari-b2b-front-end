@@ -21,4 +21,10 @@ export class DataService {
       .map(res => res.json());
 
   }
+
+  getGallery() {
+    return this.http.get('http://localhost/backend/src/getGallery.php/')
+      .map(res => res.json());
+
+  }
 }
