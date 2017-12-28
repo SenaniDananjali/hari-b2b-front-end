@@ -20,10 +20,11 @@ import {MatButtonModule, MatCheckboxModule, MatFormFieldModule, MatInputModule, 
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {AdvancedsearchComponent} from './components/advancedsearch/advancedsearch.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {ParallaxComponent} from './components/parallax/parallax.component';
 
 
 const appRoutes: Routes = [
-  {path: '', component: CardsComponent},
+  {path: '', component: ParallaxComponent},
   {path: 'stylist', component: StylistComponent},
   // {path: '', component: SearchComponent},
   {path: 'advancedSearch', component: AdvancedsearchComponent}
@@ -39,6 +40,7 @@ const appRoutes: Routes = [
     StylistComponent,
     CalendarComponent,
     AdvancedsearchComponent,
+    ParallaxComponent,
 
 
   ],

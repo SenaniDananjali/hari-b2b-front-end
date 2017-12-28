@@ -51,7 +51,7 @@
                      (click)="makeBusy(date.format('YYYY-MM-DD') +'  08.00 am to 12.00 Noon')"/>
               <label class="tgl-btn" data-tg-off="Available" data-tg-on="Busy" for="cbMng{{date.format('D')}}"
               > </label>
-          </li>
+            </li>
           </div>
 
           <li class="tg-list-item">
@@ -78,11 +78,13 @@
         </td>
       </tr>
     </table>
-    <button class="btn btn-md btn-success" *ngIf="slotDetails.length>0"
+
+  </div>
+  <div class="">
+    <button class="btn  btn-md btn-success" *ngIf="slotDetails.length>0"
             style="background-color: rgba(235,63,212,0.45) ; width: auto; color: white"> Book
     </button>
   </div>
-
 
 </div>
 

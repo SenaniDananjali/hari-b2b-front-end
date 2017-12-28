@@ -15,4 +15,10 @@ export class DataService {
       .map(res => res.json());
 
   }
+
+  getSkills() {
+    return this.http.get('http://localhost/backend/src/getSkills.php/')
+      .map(res => res.json());
+
+  }
 }

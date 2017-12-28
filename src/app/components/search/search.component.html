@@ -16,12 +16,7 @@
         <label class="col-lg-3">Search your stylist by {{radioData}} </label>
         <input list="suggestions_name" style="width:500px" [(ngModel)]="search" [ngModelOptions]="{standalone: true}">
         <datalist id="suggestions_name">
-          <option value="Joana">
-          <option value="Joseph">
-          <option value="Manie">
-          <option value="Stefni">
-          <option value="Bill">
-          <option value="Ashka">
+          <option *ngFor="let name of names" [value]="name.first_name +' '+ name.last_name">
         </datalist>
       </div>
       <div *ngIf="(radioData==='Stylist skill')">
@@ -29,12 +24,7 @@
         <input list="suggestions_skill" style="width:500px" [(ngModel)]="search" [ngModelOptions]="{standalone: true}">
 
         <datalist id="suggestions_skill">
-          <option value="Hair Coloring">
-          <option value="Hair Styling">
-          <option value="Perming">
-          <option value="Relaxing">
-          <option value="Hair dressing">
-          <option value="Hair Coloring half">
+          <option *ngFor="let skill of skills" [value]="skill.description">
         </datalist>
       </div>
 
@@ -53,10 +43,3 @@
 
 
 </div>
-
-
-<!--<div *ngFor="let post of posts">-->
-<!--<p>{{post.id}}</p><br>-->
-<!--<p> {{post.first_name}}{{post.last_name}}</p>-->
-
-<!--</div>-->
