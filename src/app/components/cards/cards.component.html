@@ -1,36 +1,26 @@
-<!--<div class="allCards container" style="position:relative;z-index: 50">-->
-<!--<ul>-->
-<!--<li>-->
-<!--<div *ngFor="let name of names ">-->
-<!--<div class="card" *ngFor="let gal of gallery">-->
-<!--<img *ngIf="name.id==gal.id" [src]="gal.image_path" [alt]="gal.image_path" style="width:100%">-->
-<!--<h4>{{name.first_name}} {{name.last_name}}</h4>-->
-<!--<p class="title">Hair Stylist</p>-->
-<!--<p>Styling for Women / Men</p>-->
-<!--<p><a class="button" href="/stylist">Book</a></p>-->
+<div class="container">
 
-<!--</div>-->
-<!--</div>-->
-<!--</li>-->
+  <div class="d-flex">
 
-<!--</ul>-->
-<!--</div>-->
 
-<div *ngFor="let name of names " style="position:relative;z-index: 50">
-  <div class="allCards container" *ngFor="let gal of gallery">
-    <div class="card" *ngIf="name.id==gal.id">
-      <ul>
-        <li *ngIf="name.id==gal.id">
+    <div *ngFor="let name of names ">
+      <div class="allCards container" *ngFor="let gal of gallery">
+        <div class="card" *ngIf="name.id==gal.id" style="position:relative;z-index: 50">
+          <ul>
+            <li *ngIf="name.id==gal.id">
+              <div class="thumbnail">
+                <img src="data:image/jpg;base64,{{gal.image_path}}" style="height:150px">
+              </div>
+              <h4>{{name.first_name}} {{name.last_name}}</h4>
+              <p class="title">Hair Stylist</p>
+              <p>Styling for Women / Men</p>
+              <p><a class="button" href="/stylist">Book</a></p>
 
-          <img src="data:image/jpg;base64,{{gal.image_path}}" style="width:100%">
-          <h4>{{name.first_name}} {{name.last_name}}</h4>
-          <p class="title">Hair Stylist</p>
-          <p>Styling for Women / Men</p>
-          <p><a class="button" href="/stylist">Book</a></p>
+            </li>
+          </ul>
+        </div>
 
-        </li>
-      </ul>
+      </div>
     </div>
-
   </div>
 </div>
