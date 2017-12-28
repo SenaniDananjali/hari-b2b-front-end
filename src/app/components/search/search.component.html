@@ -1,5 +1,5 @@
-<form (submit)="onSearch()">
-  <div></div>
+<form (submit)="onSearch() ">
+
   <div>
     <h2 style="font-style: oblique">Search Stylists for your need</h2>
   </div>
@@ -29,15 +29,21 @@
       </div>
 
     </div>
+    <div class="row ">
+      <div class="col-lg-8"></div>
+      <div class="advancedSearch col-lg-3 col-lg-offset-9">
+
+        <button class="adva-search p-0.5" routerLink="/searchCards"> Search</button>
+      </div>
+    </div>
 
   </div>
 
+
 </form>
 <div class="row ">
-  <div class="col-lg-9"></div>
+  <div class="col-lg-1"></div>
   <div class="advancedSearch col-lg-3 col-lg-offset-9 ">
-
-
     <button class="adva-search p-0.5 " routerLink="/advancedSearch">Advanced Search</button>
   </div>
 

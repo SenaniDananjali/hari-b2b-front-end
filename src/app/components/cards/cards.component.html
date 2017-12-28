@@ -1,26 +1,31 @@
-<div class="container">
+<form>
+  <div class="container cd">
 
-  <div class="d-flex">
+    <div class="d-flex container">
 
 
-    <div *ngFor="let name of names ">
-      <div class="allCards container" *ngFor="let gal of gallery">
-        <div class="card" *ngIf="name.id==gal.id" style="position:relative;z-index: 50">
-          <ul>
-            <li *ngIf="name.id==gal.id">
-              <div class="thumbnail">
-                <img src="data:image/jpg;base64,{{gal.image_path}}" style="height:150px">
-              </div>
-              <h4>{{name.first_name}} {{name.last_name}}</h4>
-              <p class="title">Hair Stylist</p>
-              <p>Styling for Women / Men</p>
-              <p><a class="button" href="/stylist">Book</a></p>
+      <div class="container" *ngFor="let name of names ">
+        <div class="allCards container" *ngFor="let gal of gallery">
+          <div class="card" *ngIf="name.id==gal.id" style="position:relative;z-index: 50">
+            <ul>
+              <li *ngIf="name.id==gal.id">
+                <div class="thumbnail">
+                  <img src="data:image/jpg;base64,{{gal.image_path}}" style="height:150px">
+                </div>
+                <h4>{{name.first_name}} {{name.last_name}}</h4>
+                <p class="title">Hair Stylist</p>
+                <p>Styling for Women / Men</p>
+                <button type="submit" routerLink="/stylist" [queryParams]="{name:name.first_name +' '+ name.last_name}"
+                        class="button">Book
+                </button>
 
-            </li>
-          </ul>
+
+              </li>
+            </ul>
+          </div>
+
         </div>
-
       </div>
     </div>
   </div>
-</div>
+</form>

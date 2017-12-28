@@ -45,3 +45,10 @@ ul li {
   height: 250px;
   width: 100%;
 }
+
+.cd {
+  margin-top: 150px;
+  background-color: blanchedalmond;
+  height: fit-content;
+  padding: 10px;
+}

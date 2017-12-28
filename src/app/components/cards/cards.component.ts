@@ -10,6 +10,7 @@ import 'rxjs/add/operator/map';
 export class CardsComponent implements OnInit {
   names: Names[];
   gallery: Gallery[];
+  rel: '';
 
   constructor(private dataService: DataService) {
   }
@@ -17,13 +18,12 @@ export class CardsComponent implements OnInit {
   ngOnInit() {
     this.dataService.getNames().subscribe((names) => {
       this.names = names;
-      console.log(names);
     });
     this.dataService.getGallery().subscribe((gallery) => {
       this.gallery = gallery;
-      console.log(gallery);
     });
   }
+
 
 }
 

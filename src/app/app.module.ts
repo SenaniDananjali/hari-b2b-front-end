@@ -27,6 +27,7 @@ import {SafeHtmlPipe} from './safe-html.pipe';
 const appRoutes: Routes = [
   {path: '', component: ParallaxComponent},
   {path: 'stylist', component: StylistComponent},
+  {path: 'searchCards', component: CardsComponent},
   // {path: '', component: SearchComponent},
   {path: 'advancedSearch', component: AdvancedsearchComponent}
 ];

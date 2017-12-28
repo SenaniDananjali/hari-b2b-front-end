@@ -28,7 +28,6 @@ export class SearchComponent implements OnInit {
     });
     this.dataService.getNames().subscribe((names) => {
       this.names = names;
-      console.log(names);
     });
 
   }
