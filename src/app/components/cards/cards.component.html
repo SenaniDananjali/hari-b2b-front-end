@@ -1,12 +1,13 @@
 <div class="allCards container" style="position:relative;z-index: 50">
   <ul>
-    <li *ngFor="let post of posts">
-      <div class="card" *ngIf="1==1">
+    <li *ngFor="let name of names">
+      <div class="card">
         <img src="../../../assets/prof_girl.jpg" alt="Joana" style="width:100%">
-        <h3>{{post.first_name}} {{post.last_name}}</h3>
+        <h4>{{name.first_name}} {{name.last_name}}</h4>
         <p class="title">Hair Stylist</p>
         <p>Styling for Women / Men</p>
-        <p><button>Set Booking</button></p>
+        <p><a class="button" href="/stylist">Book</a></p>
+
       </div>
     </li>
 

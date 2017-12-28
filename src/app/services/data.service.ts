@@ -10,7 +10,7 @@ export class DataService {
 
   }
 
-  getPosts() {
+  getNames() {
     return this.http.get('http://localhost/backend/src/getstylistDetails.php/')
       .map(res => res.json());
 

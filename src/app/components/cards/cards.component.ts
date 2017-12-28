@@ -8,21 +8,21 @@ import 'rxjs/add/operator/map';
   styleUrls: ['./cards.component.css']
 })
 export class CardsComponent implements OnInit {
-  posts: Posts[];
+  names: Names[];
 
   constructor(private dataService: DataService) {
   }
 
   ngOnInit() {
-    this.dataService.getPosts().subscribe((posts) => {
-      this.posts = posts;
-      console.log(posts);
+    this.dataService.getNames().subscribe((names) => {
+      this.names = names;
+      console.log(names);
     });
   }
 
 }
 
-interface Posts {
+interface Names {
   id: number;
   first_name: string;
   last_name: string;
