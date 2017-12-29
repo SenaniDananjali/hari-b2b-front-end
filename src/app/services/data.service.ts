@@ -22,8 +22,8 @@ export class DataService {
 
   }
 
-  getGallery() {
-    return this.http.get('http://localhost/backend/src/getGallery.php/')
+  getProfPic() {
+    return this.http.get('http://localhost/backend/src/getProfilePic.php/')
       .map(res => res.json());
 
   }

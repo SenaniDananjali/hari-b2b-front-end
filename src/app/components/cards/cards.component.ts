@@ -9,7 +9,7 @@ import 'rxjs/add/operator/map';
 })
 export class CardsComponent implements OnInit {
   names: Names[];
-  gallery: Gallery[];
+  profPics: ProfPics[];
   rel: '';
 
   constructor(private dataService: DataService) {
@@ -19,8 +19,8 @@ export class CardsComponent implements OnInit {
     this.dataService.getNames().subscribe((names) => {
       this.names = names;
     });
-    this.dataService.getGallery().subscribe((gallery) => {
-      this.gallery = gallery;
+    this.dataService.getProfPic().subscribe((profPics) => {
+      this.profPics = profPics;
     });
   }
 
@@ -34,7 +34,8 @@ interface Names {
 
 }
 
-interface Gallery {
+interface ProfPics {
   id: number;
+  profile_id: number;
   image_path: string;
 }

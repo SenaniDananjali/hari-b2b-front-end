@@ -2,21 +2,19 @@
   <div class="container cd">
 
     <div class="d-flex container">
-
-
       <div class="container" *ngFor="let name of names ">
-        <div class="allCards container" *ngFor="let gal of gallery">
-          <div class="card" *ngIf="name.id==gal.id" style="position:relative;z-index: 50">
+        <div class="allCards container" *ngFor="let pic of profPics">
+          <div class="card" *ngIf="name.id==pic.profile_id" style="position:relative;z-index: 50">
             <ul>
-              <li *ngIf="name.id==gal.id">
+              <li *ngIf="name.id==pic.profile_id">
                 <div class="thumbnail">
-                  <img src="data:image/jpg;base64,{{gal.image_path}}" style="height:150px">
+                  <img src="data:image/jpg;base64,{{pic.image_path}}" style="height:150px">
                 </div>
                 <h4>{{name.first_name}} {{name.last_name}}</h4>
                 <p class="title">Hair Stylist</p>
                 <p>Styling for Women / Men</p>
                 <button type="submit" routerLink="/stylist" [queryParams]="{name:name.first_name +' '+ name.last_name}"
-                        class="button">Book
+                        class="button">View
                 </button>
 
 
