@@ -27,4 +27,10 @@ export class DataService {
       .map(res => res.json());
 
   }
+
+  getStylistSkills() {
+    return this.http.get('http://localhost/backend/src/getStylistSkills.php/')
+      .map(res => res.json());
+
+  }
 }

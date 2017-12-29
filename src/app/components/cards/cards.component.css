@@ -1,9 +1,5 @@
 .card {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  max-width: 200px;
-  margin: auto;
-  text-align: center;
-  font-family: arial;
+
 
 }
 
@@ -30,21 +26,6 @@
   opacity: 0.7;
 }
 
-ul {
-  display: table;
-  list-style: none;
-  padding: 0;
-}
-
-ul li {
-  display: inline-block;
-  padding: 5px;
-}
-
-.thumbnail img {
-  height: 250px;
-  width: 100%;
-}
 
 .cd {
   margin-top: 150px;
