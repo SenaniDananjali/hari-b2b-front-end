@@ -18,6 +18,7 @@ export class CalendarComponent implements OnInit {
   public nextWeekDay: any[] = [];
   public slotDetails: any[] = [];
   selected = 'Selected';
+  busyDates: any[]=[];
 
   constructor() {
   }
@@ -34,9 +35,10 @@ export class CalendarComponent implements OnInit {
 
     for (let i = 0; i < 7; i++) {
       this.nextWeekDay[i] = this.setDate(lastOfWeek - today + 1 + i);
-
+       console.log(moment("1995-12-25"));
     }
-
+      this.busyDates.push('2018-01-01');
+    console.log(this.busyDates[0]);
 
   }
 
