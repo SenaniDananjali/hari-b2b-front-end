@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import * as moment from 'moment';
 import {DataService} from '../../services/data.service';
 import {ActivatedRoute} from '@angular/router';
@@ -22,6 +22,8 @@ export class CalendarComponent implements OnInit {
   selected = 'Selected';
   dates: Dates[];
   query: any;
+
+  // @Input() stylistId: number;
 
   constructor(private dataService: DataService, private route: ActivatedRoute) {
   }
@@ -52,6 +54,7 @@ export class CalendarComponent implements OnInit {
     return moment().add(num, 'days');
 
   }
+
 
   makeBusy(busy) {
     console.log(busy);

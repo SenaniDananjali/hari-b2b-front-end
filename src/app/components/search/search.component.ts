@@ -32,6 +32,7 @@ export class SearchComponent implements OnInit {
 
   }
 
+
   onSearch() {
     console.log(this.search);
 
