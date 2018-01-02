@@ -8,13 +8,13 @@ import {DataService} from '../../services/data.service';
   styleUrls: ['./stylist.component.css']
 })
 export class StylistComponent implements OnInit {
-  skills: string[];
   amount: number;
   currency: string;
   galleryPath: string[];
   query: any;
   profPics: ProfPics[];
   stylistSkills: StylistSkills[];
+  names: Names[];
 
   constructor(private route: ActivatedRoute, private dataService: DataService) {
   }
@@ -26,17 +26,16 @@ export class StylistComponent implements OnInit {
       console.log(this.query.id);
     });
 
-    this.skills = ['Hair Dressing', 'Hair Coloring', 'Perming', 'men/women hair cutting'];
     this.amount = 150;
     this.currency = '$';
-    this.galleryPath = ['../../../assets/galery1.jpg', '../../../assets/galery2.jpg', '../../../assets/galery5.jpg', '../../../assets/galery3.jpg', '../../../assets/galery6.jpg', '../../../assets/galery7.jpg', '../../../assets/galery4.jpg'];
+    this.galleryPath = ['../../../assets/galery5.jpg', '../../../assets/galery6.jpg', '../../../assets/galery7.jpg', '../../../assets/galery1.jpg', '../../../assets/galery2.jpg', '../../../assets/galery5.jpg', '../../../assets/galery3.jpg'];
 
     this.dataService.getProfPic().subscribe((profPics) => {
       this.profPics = profPics;
     });
     this.dataService.getStylistSkills().subscribe((stylistSkills) => {
       this.stylistSkills = stylistSkills;
-      console.log(stylistSkills.des);
+      // console.log(stylistSkills.des);
     });
 
   }
@@ -53,5 +52,12 @@ interface ProfPics {
 interface StylistSkills {
   id: number;
   skill: number;
-  des: string;
+
+}
+
+interface Names {
+  id: number;
+  first_name: string;
+  last_name: string;
+  description: string;
 }

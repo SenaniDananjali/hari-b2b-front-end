@@ -48,26 +48,30 @@
 
             <li class="tg-list-item">
               Morning
-              <div *ngFor="let busy of bdates">
+              <div *ngFor="let busy of dates">
 
-<!--<div *ngIf="busy.">-->
-              <div *ngIf="busy.busy==date.format('YYYY-MM-DD')">
-              <input class="tgl tgl-flip" id="cbMng{{busy.busy}}" type="checkbox" checked [disabled]="true"
-                     (click)="makeBusy(date.format('YYYY-MM-DD') +'  08.00 am to 12.00 Noon')"/>
-              <label class="tgl-btn" data-tg-off="Available" data-tg-on="Busy" for="cbMng{{busy.busy}}">
-              </label>
-<!--</div>--></div>
+                <!--<div *ngIf="busy.">-->
+                <div *ngIf="busy.stylist==1">
+
+
+                  <div *ngIf="busy.busy==date.format('YYYY-MM-DD')">
+                    <input class="tgl tgl-flip" id="cbMng{{busy.busy}}" type="checkbox" checked [disabled]="true"
+                           (click)="makeBusy(date.format('YYYY-MM-DD') +'  08.00 am to 12.00 Noon')"/>
+                    <label class="tgl-btn" data-tg-off="Available" data-tg-on="Busy" for="cbMng{{busy.busy}}">
+                    </label>
+                    <!--</div>--></div>
+                </div>
               </div>
               <!--</div>-->
             </li>
 
-          <li class="tg-list-item">
-            Evening
-            <input class="tgl tgl-flip " id="cbEve{{date.format('D')}}" type="checkbox"
-                   (click)="makeBusy(date.format('YYYY-MM-DD') +'  01.00 pm to 05.00 pm')"/>
-            <label class="tgl-btn" data-tg-off="Available" data-tg-on="Selected" for="cbEve{{date.format('D')}}"
-            ></label>
-          </li>
+            <li class="tg-list-item">
+              Evening
+              <input class="tgl tgl-flip " id="cbEve{{date.format('D')}}" type="checkbox"
+                     (click)="makeBusy(date.format('YYYY-MM-DD') +'  01.00 pm to 05.00 pm')"/>
+              <label class="tgl-btn" data-tg-off="Available" data-tg-on="Selected" for="cbEve{{date.format('D')}}"
+              ></label>
+            </li>
           </div>
         </div>
 

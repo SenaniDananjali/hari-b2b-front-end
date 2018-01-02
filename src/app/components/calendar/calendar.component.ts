@@ -19,7 +19,7 @@ export class CalendarComponent implements OnInit {
   public nextWeekDay: any[] = [];
   public slotDetails: any[] = [];
   selected = 'Selected';
-  bdates: Bdates[];
+  dates: Dates[];
 
   constructor(private dataService: DataService) {
   }
@@ -34,11 +34,13 @@ export class CalendarComponent implements OnInit {
 
     }
 
-    this.dataService.getBusyDates().subscribe((bdates) => {
-      console.log(this.bdates);
+    this.dataService.getBusyDates().subscribe((dates) => {
+      this.dates = dates;
+      console.log(this.dates);
     });
-
+console.log(this.dates);
   }
+
 
   setDate(num) {
     return moment().add(num, 'days');
@@ -69,9 +71,8 @@ interface Details {
 
 }
 
-interface Bdates {
+interface Dates {
   stylist: number;
-  slot: string;
   busy: string;
-
+  slot: string;
 }

@@ -35,7 +35,8 @@ export class DataService {
   }
 
   getBusyDates() {
-    return this.http.get('https://localhost/backend/src/getBusyDates.php');
+    return this.http.get('http://localhost/backend/src/getBusyDates.php')
+      .map(res => res.json());
 
   }
 }

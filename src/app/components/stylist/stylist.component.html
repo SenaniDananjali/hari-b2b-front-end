@@ -11,12 +11,18 @@
         </div>
         <img class="ratings " src="../../../assets/ratings4.png" style="width:110px">
         <h3>{{query.name}}</h3>
+
+        <div *ngFor="let desc of names">
+          <div *ngIf="desc.id==query.id">
+            {{desc.description}}
+          </div>
+        </div>
       </div>
       <div class=" col-lg-10 ">
         <table>
           <tr *ngFor="let sk of stylistSkills">
             <div *ngIf="sk.id==query.id">
-              <td class="skill-list">{{sk.skill}} </td>
+              <td class="skill-list">{{sk.skill}}</td>
             </div>
           </tr>
           <tr>
