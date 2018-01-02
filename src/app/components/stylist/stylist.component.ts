@@ -23,7 +23,7 @@ export class StylistComponent implements OnInit {
 
     this.route.queryParams.subscribe(v => {
       this.query = v;
-      console.log(this.query.id);
+      // console.log(this.query.id);
     });
 
     this.amount = 150;

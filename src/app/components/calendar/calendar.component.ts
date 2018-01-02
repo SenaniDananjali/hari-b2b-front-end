@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import * as moment from 'moment';
 import {DataService} from '../../services/data.service';
+import {ActivatedRoute} from '@angular/router';
 
 enum busyStates {
 
@@ -20,13 +21,18 @@ export class CalendarComponent implements OnInit {
   public slotDetails: any[] = [];
   selected = 'Selected';
   dates: Dates[];
+  query: any;
 
-  constructor(private dataService: DataService) {
+  constructor(private dataService: DataService, private route: ActivatedRoute) {
   }
 
   ngOnInit() {
     const firstOfWeek = +moment().startOf('isoWeek').format('D');
     const today = +moment().format('D');
+    this.route.queryParams.subscribe(v => {
+      this.query = v;
+      console.log(this.query.id);
+    });
 
 
     for (let i = 0; i < 70; i++) {
@@ -38,7 +44,7 @@ export class CalendarComponent implements OnInit {
       this.dates = dates;
       console.log(this.dates);
     });
-console.log(this.dates);
+    console.log(this.dates);
   }
 
 
