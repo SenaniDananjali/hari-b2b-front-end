@@ -12,7 +12,7 @@
 .calendarDateHeading {
   width: 150px;
   height: 55px;
-  background: rgba(0,0,0,1);;
+  background: rgba(0,0,0,0.33);
   color: white ;
   text-align: center;
   font-style: oblique;
@@ -22,7 +22,7 @@ font-weight: bold;
 .calendarDates {
   width: 150px;
   height: 150px;
-  background:rgba(0,0,0,1);
+  background:rgba(0,0,0,0.5);
   color: white;
   font-style: oblique;
 
@@ -192,7 +192,7 @@ li {
   -webkit-transform: rotateY(0);
   transform: rotateY(0);
   left: 0;
-  background: rgba(200,21,22,0.81);
+  background: #6159ff;
 }
 .tgl-flip:checked + .tgl-btn:active:after {
   -webkit-transform: rotateY(20deg);
@@ -217,4 +217,22 @@ tr:nth-child(odd) {background-color:rgba(20,20,23,0.69);
 }
 li{
   background-color:rgba(80,61,105,0.23);
+}
+.busybtn{
+  display: inline-block;
+  -webkit-transition: all .4s ease;
+  transition: all .4s ease;
+  width: 100%;
+  text-align: center;
+  position: absolute;
+  line-height: 2em;
+  font-weight: bold;
+  color: #fff;
+  position: absolute;
+  top: 0;
+  left: 0;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  border-radius: 4px;
+  background: rgba(255,18,125,0.33);
 }

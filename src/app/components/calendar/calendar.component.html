@@ -33,51 +33,56 @@
 
   <ng-template #itemTemplate>
     <div class="calendar image " *ngFor="let date of thisWeekDay ">
-
       <div class="calendarDateHeading ">
         {{date.format('Y')}}
         {{date.format('MMMM')}}
         <br>
         {{date.format('dddd')}}
-
         <div class="calendarDates">
-
           {{date.format('D')}}
           <br>
           <div class="morning">
-
             <li class="tg-list-item">
               Morning
               <div *ngFor="let busy of dates">
-
-                <!--<div *ngIf="busy.">-->
-                <div *ngIf="busy.stylist==1">
-
-
+                <div *ngIf="busy.stylist==1 && busy.slot=='8AM - 12PM'">
                   <div *ngIf="busy.busy==date.format('YYYY-MM-DD')">
                     <input class="tgl tgl-flip" id="cbMng{{busy.busy}}" type="checkbox" checked [disabled]="true"
                            (click)="makeBusy(date.format('YYYY-MM-DD') +'  08.00 am to 12.00 Noon')"/>
-                    <label class="tgl-btn" data-tg-off="Available" data-tg-on="Busy" for="cbMng{{busy.busy}}">
+                    <label class="busybtn"  for="cbMng{{busy.busy}}">Busy
                     </label>
-                    <!--</div>--></div>
+                  </div>
+                  <div *ngIf = "busy.busy!=date.format('YYYY-MM-DD')">
+                    <input class="tgl tgl-flip" id="cbMng{{date.format('D')}}" type="checkbox"
+                           (click)="makeBusy(date.format('YYYY-MM-DD') +'  08.00 am to 12.00 Noon')"/>
+                    <label class="tgl-btn" data-tg-off="Available" data-tg-on="Selected" for="cbMng{{date.format('D')}}">
+                    </label>
+                  </div>
                 </div>
               </div>
-              <!--</div>-->
             </li>
-
             <li class="tg-list-item">
               Evening
-              <input class="tgl tgl-flip " id="cbEve{{date.format('D')}}" type="checkbox"
-                     (click)="makeBusy(date.format('YYYY-MM-DD') +'  01.00 pm to 05.00 pm')"/>
-              <label class="tgl-btn" data-tg-off="Available" data-tg-on="Selected" for="cbEve{{date.format('D')}}"
-              ></label>
+              <div *ngFor="let busy of dates">
+                <div *ngIf="busy.stylist==1 && busy.slot=='1PM - 5PM'">
+                  <div *ngIf="busy.busy==date.format('YYYY-MM-DD')">
+                    <input class="tgl tgl-flip" id="cbEve{{busy.busy}}" type="checkbox" checked [disabled]="true"
+                           (click)="makeBusy(date.format('YYYY-MM-DD') +'  08.00 am to 12.00 Noon')"/>
+                    <label class="tgl-btn" data-tg-off="Available" data-tg-on="Busy" for="cbEve{{busy.busy}}">
+                    </label>
+                  </div>
+                  <div *ngIf = "busy.busy!=date.format('YYYY-MM-DD')">
+                    <input class="tgl tgl-flip" id="cbEve{{date.format('D')}}" type="checkbox"
+                           (click)="makeBusy(date.format('YYYY-MM-DD') +'  08.00 am to 12.00 Noon')"/>
+                    <label class="tgl-btn" data-tg-off="Available" data-tg-on="Selected" for="cbEve{{date.format('D')}}">
+                    </label>
+                  </div>
+                </div>
+              </div>
             </li>
           </div>
         </div>
-
       </div>
-
-
     </div>
   </ng-template>
   <div class="container">
