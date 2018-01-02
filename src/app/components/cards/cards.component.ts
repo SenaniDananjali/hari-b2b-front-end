@@ -49,4 +49,5 @@ interface ProfPics {
 interface StylistSkills {
   id: number;
   skill: number;
+  des: string;
 }

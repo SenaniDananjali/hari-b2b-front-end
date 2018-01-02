@@ -3,20 +3,21 @@
 
     <div class=" pt-2 pb-2 row ">
       <div class=" col-lg-2">
-        <img class="profile" src="../../../assets/sty_prof.jpg" alt="profile" width="150" height="150">
-        <img class="ratings " src="../../../assets/ratings4.png" style="width:110px">
 
+        <div *ngFor="let pic of profPics">
+          <div *ngIf="pic.profile_id==query.id">
+            <img class="profile" src="data:image/jpg;base64,{{pic.image_path}}" alt="profile" width="150" height="150">
+          </div>
+        </div>
+        <img class="ratings " src="../../../assets/ratings4.png" style="width:110px">
+        <h3>{{query.name}}</h3>
       </div>
       <div class=" col-lg-10 ">
         <table>
-
-          <tr *ngFor="let sk of skills">
-            <td class="skill-list">{{sk}}
-              <p>Advanced, Barber, Classics, Clipper work, Dry cutting, Fading, Freehand,
-                Razor, Scissors over comb, Shaving, Texturizing, Advanced, Classics, Dry cutting, Extensions tape,
-                Freehand, Long hair, Razor, Short hair, Texturizing
-              </p>
-            </td>
+          <tr *ngFor="let sk of stylistSkills">
+            <div *ngIf="sk.id==query.id">
+              <td class="skill-list">{{sk.skill}} </td>
+            </div>
           </tr>
           <tr>
             <td class="skill-list">

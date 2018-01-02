@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import * as moment from 'moment';
+import {DataService} from '../../services/data.service';
 
 enum busyStates {
 
@@ -18,27 +19,24 @@ export class CalendarComponent implements OnInit {
   public nextWeekDay: any[] = [];
   public slotDetails: any[] = [];
   selected = 'Selected';
-  busyDates: any[]=[];
+  bdates: Bdates[];
 
-  constructor() {
+  constructor(private dataService: DataService) {
   }
 
   ngOnInit() {
     const firstOfWeek = +moment().startOf('isoWeek').format('D');
     const today = +moment().format('D');
-    const lastOfWeek = +moment().endOf('isoWeek').format('D');
+
 
     for (let i = 0; i < 70; i++) {
       this.thisWeekDay[i] = this.setDate(firstOfWeek - today + i);
 
     }
 
-    for (let i = 0; i < 7; i++) {
-      this.nextWeekDay[i] = this.setDate(lastOfWeek - today + 1 + i);
-       console.log(moment("1995-12-25"));
-    }
-      this.busyDates.push('2018-01-01');
-    console.log(this.busyDates[0]);
+    this.dataService.getBusyDates().subscribe((bdates) => {
+      console.log(this.bdates);
+    });
 
   }
 
@@ -68,5 +66,12 @@ export class CalendarComponent implements OnInit {
 interface Details {
   date: string;
   state: number;
+
+}
+
+interface Bdates {
+  stylist: number;
+  slot: string;
+  busy: string;
 
 }
