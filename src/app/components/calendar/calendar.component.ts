@@ -21,7 +21,9 @@ export class CalendarComponent implements OnInit {
   public slotDetails: any[] = [];
   selected = 'Selected';
   dates: Dates[];
+  busydates: Busydates[] = [];
   query: any;
+  sum = 0;
 
   // @Input() stylistId: number;
 
@@ -37,22 +39,43 @@ export class CalendarComponent implements OnInit {
     });
 
 
-    for (let i = 0; i < 70; i++) {
+    for (let i = 0; i < 20; i++) {
       this.thisWeekDay[i] = this.setDate(firstOfWeek - today + i);
 
     }
 
     this.dataService.getBusyDates().subscribe((dates) => {
       this.dates = dates;
+      console.log('qid');
+      console.log(this.query.id);
+      this.datesForStylist(this.query.id);
       console.log(this.dates);
     });
-    console.log(this.dates);
+    // console.log(this.dates);
+
+
   }
 
 
   setDate(num) {
     return moment().add(num, 'days');
 
+  }
+
+  datesForStylist(sty) {
+    for (let i = 0; i < this.dates.length; i++) {
+      console.log('hi');
+      if (sty === this.dates[i].stylist) {
+        const bd = {};
+        bd.busy = this.dates[i].busy;
+        bd.slot = this.dates[i].slot;
+        this.busydates.push(bd);
+//        console.log('sdff');
+
+
+      }
+    }
+    console.log(this.busydates);
   }
 
 
@@ -70,6 +93,16 @@ export class CalendarComponent implements OnInit {
 
     // console.log(i);
   }
+
+  containsInBusyDates(date, slot): boolean {
+    for (let i = 0; i < this.busydates.length; i++) {
+      const busy = this.busydates[i];
+      if (busy.busy === date && busy.slot === slot) {
+        return false;
+      }
+    }
+    return true;
+  }
 }
 
 
@@ -82,6 +115,11 @@ interface Details {
 
 interface Dates {
   stylist: number;
+  busy: string;
+  slot: string;
+}
+
+interface Busydates {
   busy: string;
   slot: string;
 }
