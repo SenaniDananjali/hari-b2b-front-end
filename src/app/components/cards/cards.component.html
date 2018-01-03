@@ -2,15 +2,15 @@
   <div class="container " style="margin-top: 170px">
 
     <div class="container">
-      <div *ngIf="query.type=='Stylist name'" style="border-color: rgba(34,34,34,0.82);border-width: 1px">
+      <div *ngIf="query.type=='Stylist name'" style="border-color: rgba(34,34,34,0.82);border-width: 1px;background: lemonchiffon">
         <div class="mt-1 container" *ngFor="let name of names ">
           <div class=" container" *ngFor="let pic of profPics">
 
             <div *ngIf="name.first_name+' '+name.last_name===query.ss ||name.first_name==query.ss ||name.last_name==query.ss">
 
               <div *ngIf="name.id==pic.profile_id">
-                <div class="m-lg-2">
-                  <img src="data:image/jpg;base64,{{pic.image_path}}" style="height:150px">
+                <div class="m-lg-2 pt-3">
+                  <img  src="data:image/jpg;base64,{{pic.image_path}}" style="height:150px">
                 </div>
                 <h4>{{name.first_name}} {{name.last_name}}</h4>
                 <p class="title">Hair Stylist</p>
