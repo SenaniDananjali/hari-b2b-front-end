@@ -39,4 +39,8 @@ export class DataService {
       .map(res => res.json());
 
   }
+  getLocations() {
+    return this.http.get('http://localhost/backend/src/getPreferedLocations.php')
+      .map(res => res.json());
+  }
 }

@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {DataService} from '../../services/data.service';
 
 @Component({
   selector: 'app-advancedsearch',
@@ -6,19 +7,38 @@ import {Component, OnInit} from '@angular/core';
   styleUrls: ['./advancedsearch.component.css']
 })
 export class AdvancedsearchComponent implements OnInit {
-  from;
-  to;
-  skills: any[];
-  location: any[];
+  // ngModels
+  for;
+  skill;
+  loc;
 
-  constructor() {
+  location: Locations[];
+  skills: Skills[];
+
+  constructor(private dataService: DataService) {
   }
 
   ngOnInit() {
-    // console.log(this.date);
-    this.skills = ['Hair Dressing', 'Hair Coloring', 'Perming', 'men/women hair cutting'];
-    this.location = ['Sydney', 'Kingston', 'Perth'];
+    this.dataService.getSkills().subscribe((skills) => {
+      this.skills = skills;
+
+    });
+
+    this.dataService.getLocations().subscribe((location) => {
+      this.location = location;
+
+    });
   }
 
 
+}
+
+interface Skills {
+  id: number;
+  description: string;
+}
+
+interface Locations {
+  sty_id: number;
+  loc: string;
 }

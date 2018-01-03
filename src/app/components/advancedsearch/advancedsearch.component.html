@@ -1,10 +1,10 @@
 <div class="container">
 
   <div class=" pt-2 pb-2 row " style=" margin-top: 150px;">
-    <div class=" coloumn col-lg-4">
 
+    <div class=" coloumn col-lg-4">
       <mat-form-field>
-        <input matInput [matDatepicker]="picker" placeholder="From " [(ngModel)]="from">
+        <input matInput [matDatepicker]="picker" placeholder="For " [(ngModel)]="for">
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker>
 
@@ -12,45 +12,43 @@
 
       </mat-form-field>
       <br>
-      <button class="date">{{from | date:'fullDate'}}</button>
+      <button class="date">{{for |date:'fullDate'}}</button>
       <br>
-      <mat-form-field>
-        <input matInput [matDatepicker]="picker2" placeholder="To" [(ngModel)]="to">
-        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
-        <mat-datepicker #picker2>
-
-        </mat-datepicker>
-
-      </mat-form-field>
-      <br>
-      <button class="date">{{to | date:'fullDate'}}</button>
-
-
     </div>
 
 
     <div class="coloumn col-lg-4">
 
-      <h3>Skills</h3>
-      <tr *ngFor="let sk of skills">
-        <td class="skill-list">
-          <input type="checkbox">{{sk}}
-        </td>
-      </tr>
+      <div class="texting text-muted">Skills</div>
+      <input list="suggestions_skill" style="width:200px" [(ngModel)]="skill">
+
+      <datalist id="suggestions_skill">
+        <option *ngFor="let skill of skills" [value]="skill.description">
+      </datalist>
 
     </div>
 
     <div class="coloumn col-lg-4">
-      <h3>Job Location</h3>
-      <tr *ngFor="let loc of location">
-        <td class="skill-list">
-          <input type="checkbox">{{loc}}
-        </td>
-      </tr>
+
+      <div class="texting text-muted">Preferred Locations</div>
+      <input list="suggestions_loc" style="width:200px" [(ngModel)]="loc">
+
+      <datalist id="suggestions_loc">
+        <option *ngFor="let loc of location" [value]="loc.loc">
+      </datalist>
 
     </div>
-    <div class="col-lg-2 container mt-1">
-      <button class="btn btn-sm btn-secondary font-weight-bold" type="submit">Search</button>
+
+  </div>
+  <div class="row ">
+    <div class="col-lg-8"></div>
+    <div class="advancedSearch col-lg-3 col-lg-offset-9">
+
+      <button class="adva-search p-0.5" type="submit" routerLink="/searchCards"
+              [queryParams]="{day:for ,location:loc, skill:skill }"> Search
+      </button>
+
     </div>
   </div>
+
 </div>

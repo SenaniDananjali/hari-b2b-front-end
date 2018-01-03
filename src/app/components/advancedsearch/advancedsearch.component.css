@@ -1,14 +1,24 @@
 .date {
-  background-color: rgba(166, 92, 166, 0.87);
+  background-color: lavenderblush;
   border-color: rgba(166, 92, 166, 0);
 }
 
 .coloumn {
-  background-color: rgba(95, 18, 97, 0.49);
+  background-color: lavender;
   width: 100%;
   height: fit-content;
   /*padding-left: 5px;*/
   padding-bottom: 10px;
+
+}
+input{
+  height: 29px;
+  border-color:lavenderblush;
+}
+
+.texting{
+  font-family: Arial;
+  font-size: medium;
 
 }
 
