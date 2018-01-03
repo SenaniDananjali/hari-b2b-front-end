@@ -1,41 +1,60 @@
 <form>
-  <div class="container">
+  <div class="container " style="margin-top: 170px">
 
     <div class="container">
-      <div class="mt-1 container" *ngFor="let name of names ">
-        <div class=" container" *ngFor="let pic of profPics">
+      <div *ngIf="query.type=='Stylist name'" style="border-color: rgba(34,34,34,0.82);border-width: 1px">
+        <div class="mt-1 container" *ngFor="let name of names ">
+          <div class=" container" *ngFor="let pic of profPics">
 
-          <div class="card" *ngIf="name.id==pic.profile_id" style="position:relative;z-index: 50">
+            <div class="card"
+                 *ngIf="name.first_name+' '+name.last_name==query.ss ||name.first_name==query.ss ||name.last_name==query.ss">
 
-            <div *ngIf="name.id==pic.profile_id">
-              <div class="m-lg-2">
-                <img src="data:image/jpg;base64,{{pic.image_path}}" style="height:150px">
+              <div *ngIf="name.id==pic.profile_id">
+                <div class="m-lg-2">
+                  <img src="data:image/jpg;base64,{{pic.image_path}}" style="height:150px">
+                </div>
+                <h4>{{name.first_name}} {{name.last_name}}</h4>
+                <p class="title">Hair Stylist</p>
+                <table class="table">
+                  <tr>
+                    <td *ngFor="let skill of stylistSkills">
+                      <div *ngIf="skill.id==name.id">
+                        <button class="btn-md btn-success ">{{skill.skill}}</button>
+                      </div>
+                    </td>
+                  </tr>
+                </table>
+                <button type="submit" routerLink="/stylist"
+                        [queryParams]="{name:name.first_name +' '+ name.last_name ,id:name.id }"
+                        class="button">View
+                </button>
               </div>
-              <h4>{{name.first_name}} {{name.last_name}}</h4>
-              <p class="title">Hair Stylist</p>
-              <table class="table">
-                <tr>
-                  <td *ngFor="let skill of stylistSkills">
-                    <div *ngIf="skill.id==name.id">
-                      <button class="btn-md btn-success ">{{skill.skill}}</button>
-                    </div>
-                  </td>
-                </tr>
-              </table>
-              <button type="submit" routerLink="/stylist"
-                      [queryParams]="{name:name.first_name +' '+ name.last_name ,id:name.id }"
-                      class="button">View
-              </button>
             </div>
+
+
           </div>
-
-
         </div>
 
-      </div>
 
+        <!--<div *ngIf="query.type=='Stylist name'">-->
+        <!--<div let sk of stylistSkills>-->
+        <!--<div *ngIf="sk.skill==query.ss">-->
+        <!--<div *ngFor="let sty of names">-->
+        <!--<div  >-->
+
+        <!--</div>-->
+
+        <!--</div>-->
+        <!--</div>-->
+
+        <!--</div>-->
+        <!--</div>-->
+
+      </div>
     </div>
+
   </div>
 
 
 </form>
+
