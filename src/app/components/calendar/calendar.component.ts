@@ -46,10 +46,8 @@ export class CalendarComponent implements OnInit {
 
     this.dataService.getBusyDates().subscribe((dates) => {
       this.dates = dates;
-      console.log('qid');
-      console.log(this.query.id);
       this.datesForStylist(this.query.id);
-      console.log(this.dates);
+
     });
     // console.log(this.dates);
 
@@ -64,7 +62,6 @@ export class CalendarComponent implements OnInit {
 
   datesForStylist(sty) {
     for (let i = 0; i < this.dates.length; i++) {
-      console.log('hi');
       if (sty === this.dates[i].stylist) {
         const bd = {};
         bd.busy = this.dates[i].busy;

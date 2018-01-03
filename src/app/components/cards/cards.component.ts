@@ -6,7 +6,7 @@ import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-cards',
-    templateUrl: './cards.component.html',
+  templateUrl: './cards.component.html',
   styleUrls: ['./cards.component.css']
 })
 export class CardsComponent implements OnInit {
@@ -15,12 +15,16 @@ export class CardsComponent implements OnInit {
   stylistSkills: StylistSkills[];
   rel: '';
   query: any;
+  stylistFromSkill: number[] = [];
+  namesSk: NamesSk[] = [];
+
   // public @Input() currentuser: string;
 
   constructor(private dataService: DataService, private route: ActivatedRoute) {
   }
 
   ngOnInit() {
+
     this.dataService.getNames().subscribe((names) => {
       this.names = names;
     });
@@ -30,14 +34,39 @@ export class CardsComponent implements OnInit {
 
     this.dataService.getStylistSkills().subscribe((stylistSkills) => {
       this.stylistSkills = stylistSkills;
-      console.log(stylistSkills);
+      this.skillToStylist(this.query.ss);
+      this.dupNames(this.stylistFromSkill);
     });
+    // this.dupNames(this.stylistFromSkill);
 
     this.route.queryParams.subscribe(v => {
       this.query = v;
       console.log(this.query);
       // type,ss;
     });
+  }
+
+  skillToStylist(skill) {
+    for (let i = 0; i < this.stylistSkills.length; i++) {
+      if (skill === this.stylistSkills[i].skill) {
+        this.stylistFromSkill.push(this.stylistSkills[i].id);
+      }
+    }
+  }
+
+  dupNames(sty: any[]) {
+    for (let i = 0; i < this.names.length; i++) {
+      for (let j = 0; j < sty.length; j++) {
+        if (sty[j] === this.names[i].id) {
+          const obj{};
+          obj.id = this.names[i].id;
+          obj.first_name = this.names[i].first_name;
+          obj.last_name = this.names[i].last_name;
+          this.namesSk.push(obj);
+          console.log(obj);
+        }
+      }
+    }
   }
 
 
@@ -49,6 +78,14 @@ interface Names {
   last_name: string;
 
 }
+
+interface NamesSk {
+  id: number;
+  first_name: string;
+  last_name: string;
+
+}
+
 
 interface ProfPics {
   id: number;

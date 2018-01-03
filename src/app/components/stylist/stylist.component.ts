@@ -16,6 +16,7 @@ export class StylistComponent implements OnInit {
   stylistSkills: StylistSkills[];
   names: Names[];
 
+
   constructor(private route: ActivatedRoute, private dataService: DataService) {
   }
 
@@ -39,6 +40,8 @@ export class StylistComponent implements OnInit {
     });
 
   }
+
+
 
 
 }

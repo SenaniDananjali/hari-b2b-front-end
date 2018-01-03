@@ -17,7 +17,7 @@ export class SearchComponent implements OnInit {
   radioData = 'Stylist name';
 
   selected: boolean;
-  search = ' ';
+  search = '';
 
   ngOnInit() {
     this.selected = true;
