@@ -10,24 +10,24 @@
             <div class=""
                  *ngIf="name.first_name+' '+name.last_name===query.ss ||name.first_name==query.ss ||name.last_name==query.ss">
 
-              <div *ngIf="name.id==pic.profile_id">
-                <div class="col-lg-4 m-lg-2 pt-3">
+              <div class="row" *ngIf="name.id==pic.profile_id">
+                <div class="col-sm-4 m-lg-2 pt-3">
                   <img src="data:image/jpg;base64,{{pic.image_path}}" style="height:150px">
                 </div>
-                <h4>{{name.first_name}} {{name.last_name}}</h4>
-                <p class="title">Hair Stylist</p>
-                <table class="table">
-                  <tr>
-                    <td *ngFor="let skill of stylistSkills">
-                      <div *ngIf="skill.id==name.id">
-                        <button class="btn-md btn-success ">{{skill.skill}}</button>
-                      </div>
-                    </td>
-                  </tr>
-                </table>
+                <div class="col-sm-8">
+                  <h4>{{name.first_name}} {{name.last_name}}</h4>
+                  <div *ngFor="let j of job">
+                    <p *ngIf="j.sty_id===name.id" class="title">{{j.job}}</p>
+                  </div>
+                  <div *ngFor="let skill of stylistSkills">
+                    <ul class="list-inline" *ngIf="skill.id==name.id">
+                      <li>{{skill.skill}}</li>
+                    </ul>
+                  </div>
+                </div>
                 <button type="submit" routerLink="/stylist"
                         [queryParams]="{name:name.first_name +' '+ name.last_name ,id:name.id }"
-                        class="button">View
+                        class="button" >View {{name.first_name}}
                 </button>
               </div>
 
@@ -36,6 +36,7 @@
           </div>
         </div>
       </div>
+
       <div *ngIf="query.type=='Stylist skill'" style="border-color: rgba(34,34,34,0.82);border-width: 1px">
         <div class="mt-1 container" *ngFor="let name of namesSk ">
           <div class=" container" *ngFor="let pic of profPics">

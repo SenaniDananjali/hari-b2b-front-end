@@ -11,9 +11,11 @@ export class AdvancedsearchComponent implements OnInit {
   for;
   skill;
   loc;
+  j;
 
   location: Locations[];
   skills: Skills[];
+  job: Job[];
 
   constructor(private dataService: DataService) {
   }
@@ -24,9 +26,14 @@ export class AdvancedsearchComponent implements OnInit {
 
     });
 
-    this.dataService.getLocations().subscribe((location) => {
+    this.dataService.getLocationsForSearch().subscribe((location) => {
       this.location = location;
 
+    });
+
+    this.dataService.getJob().subscribe((job) => {
+      this.job = job;
+      console.log(this.job);
     });
   }
 
@@ -39,6 +46,10 @@ interface Skills {
 }
 
 interface Locations {
-  sty_id: number;
-  loc: string;
+  city: string;
 }
+
+interface Job {
+  job: string;
+}
+

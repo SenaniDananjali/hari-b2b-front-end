@@ -1,8 +1,19 @@
 <div class="container">
 
   <div class=" pt-2 pb-2 row " style=" margin-top: 150px;">
+    <div class="coloumn col-lg-3">
 
-    <div class=" coloumn col-lg-4">
+      <div class="texting text-muted">I want a</div>
+      <input list="suggestions_job" style="width:200px" [(ngModel)]="j">
+
+      <datalist id="suggestions_job">
+
+        <option *ngFor="let j of job" [value]="j.job">
+      </datalist>
+
+    </div>
+
+    <div class=" coloumn col-lg-3">
       <mat-form-field>
         <input matInput [matDatepicker]="picker" placeholder="For " [(ngModel)]="for">
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
@@ -17,7 +28,7 @@
     </div>
 
 
-    <div class="coloumn col-lg-4">
+    <div class="coloumn col-lg-3">
 
       <div class="texting text-muted">Skills</div>
       <input list="suggestions_skill" style="width:200px" [(ngModel)]="skill">
@@ -28,13 +39,13 @@
 
     </div>
 
-    <div class="coloumn col-lg-4">
+    <div class="coloumn col-lg-3">
 
       <div class="texting text-muted">Preferred Locations</div>
       <input list="suggestions_loc" style="width:200px" [(ngModel)]="loc">
 
       <datalist id="suggestions_loc">
-        <option *ngFor="let loc of location" [value]="loc.loc">
+        <option *ngFor="let loc of location" [value]="loc.city">
       </datalist>
 
     </div>
@@ -45,7 +56,7 @@
     <div class="advancedSearch col-lg-3 col-lg-offset-9">
 
       <button class="adva-search p-0.5" type="submit" routerLink="/searchCards"
-              [queryParams]="{day:for ,location:loc, skill:skill }"> Search
+              [queryParams]="{day:for ,location:loc, skill:skill ,job:j}"> Search
       </button>
 
     </div>

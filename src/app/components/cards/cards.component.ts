@@ -17,8 +17,9 @@ export class CardsComponent implements OnInit {
   query: any;
   stylistFromSkill: number[] = [];
   namesSk: NamesSk[] = [];
+  job: Job[] = [];
+  loc: LocForSearch [];
 
-  // public @Input() currentuser: string;
 
   constructor(private dataService: DataService, private route: ActivatedRoute) {
   }
@@ -37,7 +38,14 @@ export class CardsComponent implements OnInit {
       this.skillToStylist(this.query.ss);
       this.dupNames(this.stylistFromSkill);
     });
-    // this.dupNames(this.stylistFromSkill);
+
+    this.dataService.getStylistJob().subscribe((job) => {
+      this.job = job;
+    });
+    this.dataService.getLocationsForSearch().subscribe((loc) => {
+      this.loc = loc;
+    });
+
 
     this.route.queryParams.subscribe(v => {
       this.query = v;
@@ -53,6 +61,14 @@ export class CardsComponent implements OnInit {
       }
     }
   }
+
+  // locationToStylist(loc) {
+  //   for (let i = 0; i < this..length; i++) {
+  //     if (skill === this.stylistSkills[i].skill) {
+  //       this.stylistFromSkill.push(this.stylistSkills[i].id);
+  //     }
+  //   }
+  // }
 
   dupNames(sty: any[]) {
     for (let i = 0; i < this.names.length; i++) {
@@ -97,4 +113,17 @@ interface StylistSkills {
   id: number; // stylist Id
   skill: string;
   des: string;
+}
+
+interface Job {
+  sty_id: number;
+  job: string;
+}
+
+interface LocForSearch{
+
+}
+
+interface ProfileFullDetails{
+
 }

@@ -9,12 +9,13 @@
   outline: 0;
   display: inline-block;
   padding: 8px;
-  color: white;
-  background-color: #000;
+  color: blue;
+  background-color:rgba(106,255,123,0.33);
   text-align: center;
   cursor: pointer;
+  font-family: Arial;
   width: 100%;
-  font-size: 15px;
+  font-size: 20px;
   text-decoration-color: blue;
 }
 
@@ -28,4 +29,7 @@
   background-color: blanchedalmond;
   height: fit-content;
   padding: 10px;
+}
+ul{
+  list-style-type: none;
 }
