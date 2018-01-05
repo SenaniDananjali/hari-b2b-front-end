@@ -16,10 +16,12 @@ export class CardsComponent implements OnInit {
   rel: '';
   query: any;
   stylistFromSkill: number[] = [];
+  stylistFromLoc: number[] = [];
+  stylistFromJob: number[] = [];
   namesSk: NamesSk[] = [];
   job: Job[] = [];
-  loc: LocForSearch [];
-
+  loc: Preferred[];
+  locForSearch: LocForSearch[];
 
   constructor(private dataService: DataService, private route: ActivatedRoute) {
   }
@@ -41,15 +43,25 @@ export class CardsComponent implements OnInit {
 
     this.dataService.getStylistJob().subscribe((job) => {
       this.job = job;
-    });
-    this.dataService.getLocationsForSearch().subscribe((loc) => {
-      this.loc = loc;
+      this.jobToStylist(this.query.job);
+      this.dupNames(this.stylistFromJob);
     });
 
+    this.dataService.getLocations().subscribe((loc) => {
+      this.loc = loc;
+      this.locationToStylist(this.query.location);
+      this.dupNames(this.stylistFromLoc);
+    });
+
+    this.dataService.getLocationsForSearch().subscribe((locForSearch) => {
+      this.locForSearch = locForSearch;
+      console.log(this.locForSearch);
+    });
 
     this.route.queryParams.subscribe(v => {
       this.query = v;
-      console.log(this.query);
+      console.log(this.query.location);
+
       // type,ss;
     });
   }
@@ -62,19 +74,29 @@ export class CardsComponent implements OnInit {
     }
   }
 
-  // locationToStylist(loc) {
-  //   for (let i = 0; i < this..length; i++) {
-  //     if (skill === this.stylistSkills[i].skill) {
-  //       this.stylistFromSkill.push(this.stylistSkills[i].id);
-  //     }
-  //   }
-  // }
+  jobToStylist(job) {
+    for (let i = 0; i < this.job.length; i++) {
+      if (job === this.job[i].job) {
+        this.stylistFromJob.push(this.job[i].sty_id);
+      }
+    }
+  }
+
+
+  locationToStylist(loc) {
+    for (let i = 0; i < this.loc.length; i++) {
+      if (loc === this.loc[i].loc) {
+        this.stylistFromLoc.push(this.loc[i].sty_id);
+      }
+    }
+  }
+
 
   dupNames(sty: any[]) {
     for (let i = 0; i < this.names.length; i++) {
       for (let j = 0; j < sty.length; j++) {
         if (sty[j] === this.names[i].id) {
-          const obj{};
+          const obj={};
           obj.id = this.names[i].id;
           obj.first_name = this.names[i].first_name;
           obj.last_name = this.names[i].last_name;
@@ -120,10 +142,12 @@ interface Job {
   job: string;
 }
 
-interface LocForSearch{
 
+interface Preferred {
+  sty_id: number;
+  loc: string;
 }
 
-interface ProfileFullDetails{
-
+interface LocForSearch {
+  loc: string;
 }
