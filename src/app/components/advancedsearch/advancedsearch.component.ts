@@ -9,7 +9,7 @@ import {DataService} from '../../services/data.service';
 export class AdvancedsearchComponent implements OnInit {
   // ngModels
   for;
-  skill;
+  ss;
   loc;
   j;
 
