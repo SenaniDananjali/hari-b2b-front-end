@@ -64,6 +64,7 @@ export class CardsComponent implements OnInit {
 
       // type,ss;
     });
+    console.log(this.namesSk);
   }
 
   skillToStylist(skill) {
@@ -96,12 +97,16 @@ export class CardsComponent implements OnInit {
     for (let i = 0; i < this.names.length; i++) {
       for (let j = 0; j < sty.length; j++) {
         if (sty[j] === this.names[i].id) {
-          const obj={};
+          // for (let k = 0; k <= this.namesSk.length + 1; k++) {
+          // console.log(this.namesSk[k]);
+          const obj: any = {};
           obj.id = this.names[i].id;
           obj.first_name = this.names[i].first_name;
           obj.last_name = this.names[i].last_name;
+          // if (obj !== this.namesSk[k]) {
           this.namesSk.push(obj);
           console.log(obj);
+
         }
       }
     }

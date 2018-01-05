@@ -63,7 +63,7 @@ export class CalendarComponent implements OnInit {
   datesForStylist(sty) {
     for (let i = 0; i < this.dates.length; i++) {
       if (sty === this.dates[i].stylist) {
-        const bd = {};
+        const bd: any = {};
         bd.busy = this.dates[i].busy;
         bd.slot = this.dates[i].slot;
         this.busydates.push(bd);
