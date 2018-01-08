@@ -56,5 +56,8 @@ export class DataService {
     return this.http.get('http://localhost/backend/src/api.php?f=locationForSearch')
       .map(res => res.json());
   }
-
+  getFullDetails() {
+    return this.http.get('http://localhost/backend/src/api.php?f=getFullDetails')
+      .map(res => res.json());
+  }
 }

@@ -17,7 +17,6 @@ enum busyStates {
 export class CalendarComponent implements OnInit {
 
   public thisWeekDay: any[] = [];
-  public nextWeekDay: any[] = [];
   public slotDetails: any[] = [];
   selected = 'Selected';
   dates: Dates[];
@@ -101,7 +100,7 @@ export class CalendarComponent implements OnInit {
     // console.log(i);
   }
 
-  containsInBusyDates(date, slot): boolean {
+  notContainsInBusyDates(date, slot): boolean {
     for (let i = 0; i < this.busydates.length; i++) {
       const busy = this.busydates[i];
       if (busy.busy === date && busy.slot === slot) {
