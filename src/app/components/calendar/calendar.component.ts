@@ -24,6 +24,9 @@ export class CalendarComponent implements OnInit {
   busydates: Busydates[] = [];
   query: any;
   sum = 0;
+  cost: number;
+  initial: number;
+  count: number;
 
   // @Input() stylistId: number;
 
@@ -50,8 +53,9 @@ export class CalendarComponent implements OnInit {
 
     });
     // console.log(this.dates);
-
-
+    this.cost = 0;
+    this.initial = 200;
+    this.count = 0;
   }
 
 
@@ -82,11 +86,17 @@ export class CalendarComponent implements OnInit {
       if (busy === this.slotDetails[i]) {
         console.log('deleted');
         this.slotDetails.splice(i, 1);
+        this.cost = this.cost - this.initial;
+        this.count--;
         return;
       }
     }
     this.slotDetails.push(busy);
+    console.log(this.cost);
+    this.cost = this.initial + this.cost;
+    this.count ++;
     console.log('added');
+    console.log(this.cost);
 
     // console.log(i);
   }

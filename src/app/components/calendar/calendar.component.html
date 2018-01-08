@@ -2,8 +2,10 @@
   <h3 align="center" style="color: rgba(248,255,139,0.76)">Choose your Sessions</h3>
   <div class="container calendarTop">
     <ul class="list-inline">
-      <li class="list-inline-item circle blue"> Busy</li>
-      <li class="list-inline-item circle green">Available</li>
+      <li class="list-inline-item circle blue btn "> Selected</li>
+      <li class="list-inline-item circle green btn">Available</li>
+      <li class="list-inline-item circle red btn"> Busy</li>
+
 
     </ul>
   </div>
@@ -42,30 +44,6 @@
           {{date.format('D')}}
           <br>
           <div class="morning">
-            <div *ngFor="let busy of busydates">
-              <div *ngIf="busy.busy===date.format('YYYY-MM-DD')  && busy.slot==='8AM - 12PM'">
-                <li class="tg-list-item">
-                  Morning
-                  <input class="tgl tgl-flip" id="cbMng{{busy.busy}}" type="checkbox" checked [disabled]="true"
-                  />
-                  <label class="tgl-btn" data-tg-off="Available" data-tg-on="Busy" for="cbEve{{busy.busy}}">
-                  </label>
-                </li>
-              </div>
-
-
-              <div *ngIf="busy.busy===date.format('YYYY-MM-DD') && busy.slot==='1PM - 5PM'">
-
-                <li class="tg-list-item">
-                  Evening
-                  <input class="tgl tgl-flip" id="cbEve{{busy.busy}}" type="checkbox" checked [disabled]="true"
-                         (click)="makeBusy(date.format('YYYY-MM-DD') +'  01.00 pm to 05.00 pm')"/>
-                  <label class="tgl-btn" data-tg-off="Available" data-tg-on="Busy" for="cbEve{{busy.busy}}">
-                  </label>
-                </li>
-              </div>
-            </div>
-
             <div *ngIf="containsInBusyDates(date.format('YYYY-MM-DD'),'8AM - 12PM')">
               <li class="tg-list-item">
                 Morning
@@ -74,6 +52,18 @@
                 <label class="tgl-btn" data-tg-off="Available" data-tg-on="Selected" for="cbMng{{date.format('D')}}">
                 </label>
               </li>
+            </div>
+
+            <div *ngFor="let busy of busydates">
+              <div *ngIf="busy.busy===date.format('YYYY-MM-DD')  && busy.slot==='8AM - 12PM'" class="pb-2">
+                <li class="tg-list-item">
+                  Morning
+                  <br>
+                  <div align="left">
+                    <label class="btn btn-danger btn-sm p-0 " style="width: 25px;height: 20px "> Busy</label>
+                  </div>
+                </li>
+              </div>
             </div>
 
             <div *ngIf="containsInBusyDates(date.format('YYYY-MM-DD'), '1PM - 5PM')">
@@ -87,47 +77,46 @@
                 </label>
               </li>
             </div>
-            <!--<div *ngIf="busy.busy!==date.format('YYYY-MM-DD') && busy.slot==='8AM - 12PM'">-->
-            <!--<li class="tg-list-item">-->
-            <!--Morning-->
-            <!--<input class="tgl tgl-flip" id="cbMng{{date.format('D')}}" type="checkbox"-->
-            <!--(click)="makeBusy(date.format('YYYY-MM-DD') +'  08.00 am to 12.00 Noon')"/>-->
-            <!--<label class="tgl-btn" data-tg-off="Available" data-tg-on="Selected" for="cbMng{{date.format('D')}}">-->
-            <!--</label>-->
-            <!--</li>-->
-            <!--</div>-->
 
-            <!--<div *ngIf="busy.busy!==date.format('YYYY-MM-DD')  && busy.slot==='1PM - 5PM'">-->
+            <div *ngFor="let busy of busydates" class="pt-1">
+              <div *ngIf="busy.busy===date.format('YYYY-MM-DD') && busy.slot==='1PM - 5PM'">
 
-            <!--<li class="tg-list-item">-->
-            <!--Evening-->
-            <!--<input class="tgl tgl-flip" id="cbEve{{date.format('D')}}" type="checkbox"-->
-            <!--(click)="makeBusy(date.format('YYYY-MM-DD') +'  01.00 pm to 05.00 pm')"/>-->
-            <!--<label class="tgl-btn" data-tg-off="Available" data-tg-on="Selected"-->
-            <!--for="cbEve{{date.format('D')}}">-->
-            <!--</label>-->
-            <!--</li>-->
-            <!--</div>-->
+                <li class="tg-list-item">
+                  Evening
+                  <br>
+                  <div align="left">
+                    <label class="btn btn-danger btn-sm p-0 " style="width: 25px;height: 20px "> Busy</label>
+                  </div>
+                </li>
+              </div>
+            </div>
           </div>
+
         </div>
       </div>
     </div>
+
   </ng-template>
   <div class="container">
     <h3 align="center" style="color: rgba(248,255,139,0.76)">Your Bookings</h3>
     <table class="container">
       <tr class="container" *ngFor="let booking of slotDetails">
-        <td class="container" style="text-align: center">
+        <td style="text-align: center">
           {{booking}}
         </td>
+        <td>{{"==>"+initial+"$"}}</td>
       </tr>
+
     </table>
 
   </div>
-  <div>
-    <button class="btn mt-1 btn-md btn-success" *ngIf="slotDetails.length>0"
-            style="background-color: rgba(235,63,212,0.45) ; width: auto; color: white"> Book
-    </button>
+  <div align="right" class="pr-3  ">
+
+          <button class="btn mt-1 btn-md btn-success" *ngIf="slotDetails.length>0"
+                  style="background-color: #6159ff ; width: auto; color: white"> Book For
+            {{count+" x "+initial+"$ "+"==> "+cost+" $"}}
+          </button>
+
   </div>
 
 
