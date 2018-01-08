@@ -11,6 +11,7 @@ export class AdvancedsearchComponent implements OnInit {
   for;
   ss;
   loc;
+  skill;
   j;
 
   location: Locations[];

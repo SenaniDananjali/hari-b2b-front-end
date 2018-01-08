@@ -25,6 +25,13 @@
                           <p class="skill-class ">{{skill.skill}}</p>
                         </div>
                       </tr>
+                      <tr>
+                        <div  *ngFor="let l of loc">
+                          <td *ngIf="l.sty_id==name.id">
+                            <button class="btn btn-sm btn-info p-0 ">{{l.loc}}</button>
+                          </td>
+                        </div>
+                      </tr>
                     </table>
                   </div>
                 </div>
@@ -60,7 +67,16 @@
                       <div *ngIf="skill.id==name.id">
                         <p class="skill-class ">{{skill.skill}}</p>
                       </div>
+
                     </tr>
+                    <tr *ngFor="let l of loc">
+                      <div>
+                        <td *ngIf="l.sty_id==name.id">
+                          <button class="btn btn-sm btn-info p-0">{{l.loc}}</button>
+                        </td>
+                      </div>
+                    </tr>
+
                   </table>
                 </div>
               </div>

@@ -19,9 +19,12 @@ export class CardsComponent implements OnInit {
   stylistFromLoc: number[] = [];
   stylistFromJob: number[] = [];
   namesSk: NamesSk[] = [];
+  namesCommon: NamesCommon[] = [];
+  namesJ: NamesJ[] = [];
   job: Job[] = [];
   loc: Preferred[];
   locForSearch: LocForSearch[];
+
 
   constructor(private dataService: DataService, private route: ActivatedRoute) {
   }
@@ -34,6 +37,12 @@ export class CardsComponent implements OnInit {
     this.dataService.getProfPic().subscribe((profPics) => {
       this.profPics = profPics;
     });
+    this.dataService.getStylistJob().subscribe((job) => {
+      this.job = job;
+      this.jobToStylist(this.query.job);
+      this.dupNames(this.stylistFromJob);
+
+    });
 
     this.dataService.getStylistSkills().subscribe((stylistSkills) => {
       this.stylistSkills = stylistSkills;
@@ -41,11 +50,7 @@ export class CardsComponent implements OnInit {
       this.dupNames(this.stylistFromSkill);
     });
 
-    this.dataService.getStylistJob().subscribe((job) => {
-      this.job = job;
-      this.jobToStylist(this.query.job);
-      this.dupNames(this.stylistFromJob);
-    });
+
 
     this.dataService.getLocations().subscribe((loc) => {
       this.loc = loc;
@@ -61,10 +66,7 @@ export class CardsComponent implements OnInit {
     this.route.queryParams.subscribe(v => {
       this.query = v;
       console.log(this.query.location);
-
-      // type,ss;
     });
-    console.log(this.namesSk);
   }
 
   skillToStylist(skill) {
@@ -97,13 +99,11 @@ export class CardsComponent implements OnInit {
     for (let i = 0; i < this.names.length; i++) {
       for (let j = 0; j < sty.length; j++) {
         if (sty[j] === this.names[i].id) {
-          // for (let k = 0; k <= this.namesSk.length + 1; k++) {
-          // console.log(this.namesSk[k]);
           const obj: any = {};
           obj.id = this.names[i].id;
           obj.first_name = this.names[i].first_name;
           obj.last_name = this.names[i].last_name;
-          // if (obj !== this.namesSk[k]) {
+
           this.namesSk.push(obj);
           console.log(obj);
 
@@ -111,6 +111,36 @@ export class CardsComponent implements OnInit {
       }
     }
   }
+
+
+  dupNamesJ(sty: any[]) {
+    for (let i = 0; i < this.names.length; i++) {
+      for (let j = 0; j < sty.length; j++) {
+        if (sty[j] === this.names[i].id) {
+          const obj: any = {};
+          obj.id = this.names[i].id;
+          obj.first_name = this.names[i].first_name;
+          obj.last_name = this.names[i].last_name;
+
+          this.namesJ.push(obj);
+          console.log(obj);
+
+        }
+      }
+    }
+  }
+//   for (let i = 0; i < this.namesSk.length; i++) {
+//   for (let j = 0; j < this.namesJ.length; j++) {
+//   if (this.namesJ[j].id === this.namesSk[i].id) {
+//   const obj: any = {};
+//   obj.id = this.names[i].id;
+//   obj.first_name = this.names[i].first_name;
+//   obj.last_name = this.names[i].last_name;
+//   this.namesCommon.push(obj);
+//   console.log(obj);
+// }
+// }
+// }
 
 
 }
@@ -123,6 +153,19 @@ interface Names {
 }
 
 interface NamesSk {
+  id: number;
+  first_name: string;
+  last_name: string;
+
+}
+
+interface NamesJ {
+  id: number;
+  first_name: string;
+  last_name: string;
+
+}
+interface NamesCommon {
   id: number;
   first_name: string;
   last_name: string;
