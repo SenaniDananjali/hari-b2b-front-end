@@ -19,6 +19,7 @@ export class CardsComponent implements OnInit {
   stylistFromLoc: number[] = [];
   stylistFromJob: number[] = [];
   namesSk: NamesSk[] = [];
+  namesTest: NamesTest[] = [];
   job: Job[] = [];
   loc: Preferred[];
   locForSearch: LocForSearch[];
@@ -30,33 +31,6 @@ export class CardsComponent implements OnInit {
   }
 
   ngOnInit() {
-
-    this.dataService.getNames().subscribe((names) => {
-      this.names = names;
-    });
-    this.dataService.getProfPic().subscribe((profPics) => {
-      this.profPics = profPics;
-    });
-    this.dataService.getStylistJob().subscribe((job) => {
-      this.job = job;
-      this.jobToStylist(this.query.job);
-      this.dupNames(this.stylistFromJob);
-
-    });
-
-    this.dataService.getStylistSkills().subscribe((stylistSkills) => {
-      this.stylistSkills = stylistSkills;
-      this.skillToStylist(this.query.ss);
-      this.dupNames(this.stylistFromSkill);
-    });
-
-
-    this.dataService.getLocations().subscribe((loc) => {
-      this.loc = loc;
-      // this.locationToStylist(this.query.location);
-      // this.dupNames(this.stylistFromLoc);
-    });
-
     this.dataService.getLocationsForSearch().subscribe((locForSearch) => {
       this.locForSearch = locForSearch;
       console.log(this.locForSearch);
@@ -64,40 +38,108 @@ export class CardsComponent implements OnInit {
 
     this.route.queryParams.subscribe(v => {
       this.query = v;
-
-      this.dataService.getFullDetails().subscribe((full) => {
-        this.full = full;
-        console.log(this.query.location);
-        for (let i = 0; i < this.full.length; i++) {
-          if (this.query.location === full[i].loc) {
-            const obj: any = {};
-            obj.id = this.full[i].sty_id;
-            obj.first_name = this.full[i].first_name;
-            obj.last_name = this.full[i].last_name;
-            // for (let j = 0; j < this.namesSk.length + 1; j++) {
-            // console.log(this.namesSk);
-            // if (this.namesSk[j].id  !== obj.id) {
-            if (this.namesSk.includes(obj)) {
-              console.log(this.namesSk.includes(obj));
-            }else {
-              console.log(this.namesSk.includes(obj))
-              this.namesSk.push(obj);
-              console.log(obj);
-              console.log(this.namesSk.includes(obj));
-            }
-            // }
-            // }
-            // console.log(this.namesSk.includes());
-          }
-        }
-      });
-
-
     });
 
+    this.dataService.getProfPic().subscribe((profPics) => {
+      this.profPics = profPics;
+    });
     this.dataService.getFullDetails().subscribe((full) => {
       this.full = full;
     });
+    this.dataService.getNames().subscribe((names) => {
+      this.names = names;
+    });
+    this.dataService.getFullDetails().subscribe((full) => {
+      this.full = full;
+      for (let i = 0; i < this.full.length; i++) {
+        const obj: any = {};
+        obj.id = this.full[i].sty_id;
+        obj.first_name = this.full[i].first_name;
+        obj.last_name = this.full[i].last_name;
+        if (this.isInclude(this.namesSk, obj)) {
+        } else {
+          console.log(this.isInclude(this.namesSk, obj));
+          this.namesSk.push(obj);
+          console.log(obj);
+          console.log(this.isInclude(this.namesSk, obj));
+        }
+      }
+
+    });
+
+
+    this.dataService.getStylistJob().subscribe((job) => {
+      this.job = job;
+      if (this.query.hasOwnProperty('job')) {
+        this.jobToStylist(this.query.job);
+        this.dupNames(this.stylistFromJob);
+        this.filter();
+        // this.removeDuplicates();
+      }
+
+    });
+
+    this.dataService.getStylistSkills().subscribe((stylistSkills) => {
+      this.stylistSkills = stylistSkills;
+      if (this.query.hasOwnProperty('ss')) {
+        this.skillToStylist(this.query.ss);
+        this.dupNames(this.stylistFromSkill);
+        this.filter();
+        // this.removeDuplicates();
+      }
+    });
+
+
+    this.dataService.getLocations().subscribe((loc) => {
+      this.loc = loc;
+      if (this.query.hasOwnProperty('location')) {
+        this.locationToStylist(this.query.location);
+        this.dupNames(this.stylistFromLoc);
+        this.filter();
+        // this.removeDuplicates();
+      }
+    });
+
+this.removeDuplicates();
+  }
+
+  removeDuplicates() {
+    let current = this.namesSk[0];
+    let found = false;
+
+    for (let i = 0; i < this.namesSk.length; i++) {
+      if (current === this.namesSk[i] && !found) {
+        found = true;
+      } else if (current !== this.namesSk[i]) {
+        console.log(current);
+        current = this.namesSk[i];
+        found = false;
+      }
+    }
+  }
+
+  filter() {
+    const test: NamesTest[] = this.namesSk;
+    this.namesSk = [];
+    console.log(this.namesSk);
+    for (let i = 0; i < this.namesTest.length; i++) {
+      for (let j = 0; j < test.length; j++) {
+        if (this.namesTest[i].id === test[j].id) {
+          console.log(test[j]);
+          this.namesSk.push(test[j]);
+        }
+      }
+    }
+  }
+
+  isInclude(arr: any[], obj) {
+    for (let i = 0; i < arr.length; i++) {
+      if (arr[i].id === obj.id && arr[i].first_name === obj.first_name && arr[i].last_name === obj.last_name) {
+        return true;
+      }
+    }
+    return false;
+
   }
 
   skillToStylist(skill) {
@@ -127,15 +169,15 @@ export class CardsComponent implements OnInit {
 
 
   dupNames(sty: any[]) {
-    for (let i = 0; i < this.names.length; i++) {
+    for (let i = 0; i < this.namesSk.length; i++) {
       for (let j = 0; j < sty.length; j++) {
-        if (sty[j] === this.names[i].id) {
+        if (sty[j] === this.namesSk[i].id) {
           const obj: any = {};
-          obj.id = this.names[i].id;
-          obj.first_name = this.names[i].first_name;
-          obj.last_name = this.names[i].last_name;
+          obj.id = this.namesSk[i].id;
+          obj.first_name = this.namesSk[i].first_name;
+          obj.last_name = this.namesSk[i].last_name;
 
-          this.namesSk.push(obj);
+          this.namesTest.push(obj);
           console.log(obj);
 
         }
@@ -154,6 +196,13 @@ interface Names {
 }
 
 interface NamesSk {
+  id: number;
+  first_name: string;
+  last_name: string;
+
+}
+
+interface NamesTest {
   id: number;
   first_name: string;
   last_name: string;

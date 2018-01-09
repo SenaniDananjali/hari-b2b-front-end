@@ -13,7 +13,6 @@ import {StylistComponent} from './components/stylist/stylist.component';
 import {AdvancedsearchComponent} from './components/advancedsearch/advancedsearch.component';
 import {ParallaxComponent} from './components/parallax/parallax.component';
 import {DataService} from './services/data.service';
-import {TestComponent} from './components/test/test.component';
 
 import {RouterModule, Routes} from '@angular/router';
 import {CalendarComponent} from './components/calendar/calendar.component';
@@ -46,7 +45,6 @@ const appRoutes: Routes = [
     AdvancedsearchComponent,
     ParallaxComponent,
     SafeHtmlPipe,
-    TestComponent,
 
 
   ],
