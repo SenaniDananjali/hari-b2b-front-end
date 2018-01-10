@@ -33,24 +33,26 @@ export class CardsComponent implements OnInit {
   ngOnInit() {
     this.dataService.getLocationsForSearch().subscribe((locForSearch) => {
       this.locForSearch = locForSearch;
-      console.log(this.locForSearch);
+
     });
 
-    this.route.queryParams.subscribe(v => {
-      this.query = v;
-    });
 
     this.dataService.getProfPic().subscribe((profPics) => {
       this.profPics = profPics;
     });
+    // this.dataService.getFullDetails().subscribe((full) => {
+    //   this.full = full;
+    // });
+    this.route.queryParams.subscribe(v => {
+      this.query = v;
+      console.log(this.namesSk);
+    });
+
+
     this.dataService.getFullDetails().subscribe((full) => {
       this.full = full;
-    });
-    this.dataService.getNames().subscribe((names) => {
-      this.names = names;
-    });
-    this.dataService.getFullDetails().subscribe((full) => {
-      this.full = full;
+      console.log(this.namesSk);
+
       for (let i = 0; i < this.full.length; i++) {
         const obj: any = {};
         obj.id = this.full[i].sty_id;
@@ -58,78 +60,206 @@ export class CardsComponent implements OnInit {
         obj.last_name = this.full[i].last_name;
         if (this.isInclude(this.namesSk, obj)) {
         } else {
-          console.log(this.isInclude(this.namesSk, obj));
           this.namesSk.push(obj);
-          console.log(obj);
-          console.log(this.isInclude(this.namesSk, obj));
+        }
+
+      }
+      console.log('initial this.namesSk');
+      console.log(this.namesSk);
+      this.dataService.getNames().subscribe((names) => {
+        this.names = names;
+      });
+
+      this.dataService.getLocations().subscribe((loc) => {
+        this.loc = loc;
+      });
+      this.dataService.getStylistSkills().subscribe((stylistSkills) => {
+        this.stylistSkills = stylistSkills;
+      });
+
+
+      if (this.query.hasOwnProperty('location')) {
+        this.dataService.getLocations().subscribe((loc) => {
+          this.loc = loc;
+          this.locationToStylist(this.query.location);
+          this.dupNames(this.stylistFromLoc);
+          this.filter();
+
+          console.log('After filter by location');
+          this.namesSk.map(value => {
+            console.log(value.id + ' ' + value.first_name);
+          });
+
+          if (this.query.hasOwnProperty('ss')) {
+            this.dataService.getStylistSkills().subscribe((stylistSkills) => {
+              this.stylistSkills = stylistSkills;
+              this.skillToStylist(this.query.ss);
+
+
+              console.log('After skillToStylist in skill');
+              this.stylistFromSkill.map(value => {
+                console.log(value + '');
+              });
+
+              this.dupNames(this.stylistFromSkill);
+
+              console.log('After dupNames in skill');
+              this.namesTest.map(value => {
+                console.log(value.id + ' ' + value.first_name);
+              });
+
+              this.filter();
+
+              console.log('After filter by skill');
+              this.namesSk.map(value => {
+                console.log(value.id + ' ' + value.first_name);
+              });
+
+              if (this.query.hasOwnProperty('job')) {
+                this.dataService.getStylistJob().subscribe((job) => {
+                  this.job = job;
+
+                  this.jobToStylist(this.query.job);
+                  this.dupNames(this.stylistFromJob);
+                  this.filter();
+                });
+              }
+            });
+          } else {
+
+            if (this.query.hasOwnProperty('job')) {
+              this.dataService.getStylistJob().subscribe((job) => {
+                this.job = job;
+
+                this.jobToStylist(this.query.job);
+                this.dupNames(this.stylistFromJob);
+                this.filter();
+              });
+            }
+          }
+
+
+        });
+      } else {
+        if (this.query.hasOwnProperty('ss')) {
+          this.dataService.getStylistSkills().subscribe((stylistSkills) => {
+            this.stylistSkills = stylistSkills;
+            this.skillToStylist(this.query.ss);
+            this.dupNames(this.stylistFromSkill);
+            this.filter();
+
+            if (this.query.hasOwnProperty('job')) {
+              this.dataService.getStylistJob().subscribe((job) => {
+                this.job = job;
+
+                this.jobToStylist(this.query.job);
+                this.dupNames(this.stylistFromJob);
+                this.filter();
+              });
+            }
+          });
+        } else {
+
+          if (this.query.hasOwnProperty('job')) {
+            this.dataService.getStylistJob().subscribe((job) => {
+              this.job = job;
+
+              this.jobToStylist(this.query.job);
+              this.dupNames(this.stylistFromJob);
+              this.filter();
+            });
+          }
         }
       }
 
-    });
-
-
-    this.dataService.getStylistJob().subscribe((job) => {
-      this.job = job;
-      if (this.query.hasOwnProperty('job')) {
-        this.jobToStylist(this.query.job);
-        this.dupNames(this.stylistFromJob);
-        this.filter();
-        // this.removeDuplicates();
-      }
+      this.removeDuplicates();
+      console.log('when remove the duplicates');
+      console.log(this.namesSk);
 
     });
 
-    this.dataService.getStylistSkills().subscribe((stylistSkills) => {
-      this.stylistSkills = stylistSkills;
-      if (this.query.hasOwnProperty('ss')) {
-        this.skillToStylist(this.query.ss);
-        this.dupNames(this.stylistFromSkill);
-        this.filter();
-        // this.removeDuplicates();
-      }
-    });
 
-
-    this.dataService.getLocations().subscribe((loc) => {
-      this.loc = loc;
-      if (this.query.hasOwnProperty('location')) {
-        this.locationToStylist(this.query.location);
-        this.dupNames(this.stylistFromLoc);
-        this.filter();
-        // this.removeDuplicates();
-      }
-    });
-
-this.removeDuplicates();
   }
 
   removeDuplicates() {
     let current = this.namesSk[0];
+    const arr: NamesSk[] = this.namesSk;
+    const len = this.namesSk.length;
+    this.namesSk = [];
     let found = false;
-
-    for (let i = 0; i < this.namesSk.length; i++) {
-      if (current === this.namesSk[i] && !found) {
+    for (let i = 0; i < len; i++) {
+      if (current.id === arr[i].id && !found) {
         found = true;
-      } else if (current !== this.namesSk[i]) {
-        console.log(current);
-        current = this.namesSk[i];
+      } else if (current.id !== arr[i].id) {
+        current = arr[i];
         found = false;
+        console.log(arr[i]);
+        this.namesSk.push(current);
       }
     }
   }
 
   filter() {
-    const test: NamesTest[] = this.namesSk;
-    this.namesSk = [];
-    console.log(this.namesSk);
+    console.log('=============================================== Start');
+
+    console.log('---------- this.nameSk start --------------');
+
+    console.log(this.namesSk + '');
+    console.log(this.namesSk.length);
+
+    console.log('---------- this.nameSk end --------------');
+
+
+    const test: NamesTest[] = this.namesSk.map(value => {
+      return value;
+    });
+
+    console.log('---------- test start --------------');
+
+    console.log(test + '');
+    console.log(test.length);
+
+    console.log('---------- test end --------------');
+
+
+    console.log(' splice this.namesSk ');
+    const len = this.namesSk.length;
+    this.namesSk.splice(0, len);
+
+    console.log('---------- After splice this.nameSk start --------------');
+
+    console.log(this.namesSk + '');
+    console.log(this.namesSk.length);
+
+    console.log('---------- After splice this.nameSk end --------------');
+
+    console.log('---------- After splice :  test start --------------');
+
+    console.log(test + '');
+    console.log(test.length);
+
+    console.log('---------- After splice : test end --------------');
+
+    //
     for (let i = 0; i < this.namesTest.length; i++) {
       for (let j = 0; j < test.length; j++) {
-        if (this.namesTest[i].id === test[j].id) {
-          console.log(test[j]);
+        if (this.namesTest[i].id === test[j].id && !this.isContainsInNamesSk(test[j].id)) {
           this.namesSk.push(test[j]);
+          break;
         }
       }
     }
+    // console.log(this.namesSk);
+    console.log('=============================================== End');
+  }
+
+  isContainsInNamesSk(val) {
+    for (let i = 0; i < this.namesSk.length; i++) {
+      if (this.namesSk[i].id === val.id) {
+        return true;
+      }
+    }
+    return false;
   }
 
   isInclude(arr: any[], obj) {
@@ -169,6 +299,8 @@ this.removeDuplicates();
 
 
   dupNames(sty: any[]) {
+    const len = this.namesTest.length;
+    this.namesTest.splice(0, len);
     for (let i = 0; i < this.namesSk.length; i++) {
       for (let j = 0; j < sty.length; j++) {
         if (sty[j] === this.namesSk[i].id) {
@@ -178,7 +310,6 @@ this.removeDuplicates();
           obj.last_name = this.namesSk[i].last_name;
 
           this.namesTest.push(obj);
-          console.log(obj);
 
         }
       }
