@@ -1,6 +1,14 @@
 <form>
-  <div class="container " style="margin-top: 170px">
+  <div class="container  " style="margin-top: 150px;">
     <div class="container ">
+      <div class="mt-2 container border rounded" style="background: lavender">
+        <ul class="d-flex flex-row">
+          <li class="p-2 title search-class text-center">Search Result For :</li>
+          <li class="p-2 title search-class text-center " *ngIf="query.hasOwnProperty('location')">{{' '+query.location+''}}</li>
+          <li class="p-2 title search-class text-center" *ngIf="query.hasOwnProperty('ss')">{{' '+query.ss+' '}}</li>
+          <li class="p-2 title search-class text-center" *ngIf="query.hasOwnProperty('job')">{{' '+query.job+' '}}</li>
+        </ul>
+      </div>
       <div class="mt-2" *ngIf="query.type=='Stylist name'">
         <div class="mt-1 container card-back border border-secondary rounded" *ngFor="let name of names ">
           <div class=" container" *ngFor="let pic of profPics">
@@ -26,7 +34,7 @@
                         </div>
                       </tr>
                       <tr>
-                        <div  *ngFor="let l of loc">
+                        <div *ngFor="let l of loc">
                           <td *ngIf="l.sty_id==name.id">
                             <button class="btn btn-sm btn-info p-0 ">{{l.loc}}</button>
                           </td>
