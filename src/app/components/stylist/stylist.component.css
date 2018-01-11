@@ -63,15 +63,18 @@ tr:nth-child(odd) {
 p {
   font-size: 14px;
 }
-.g-images{
 
-  height:inherit;
+.g-images {
+
+  padding: 5px;
+  alignment: center;
 
 }
 
-.gal-div{
+.gal-div {
   width: 100%;
   height: 400px;
   padding: 2px;
-  background-color: rgba(99,99,102,0.69);
+  background-color: rgba(99, 99, 102, 0.69);
+  alignment: center;
 }
