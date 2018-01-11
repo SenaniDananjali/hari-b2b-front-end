@@ -2,7 +2,7 @@
   <div class="container">
 
     <div class=" pt-2 pb-2 row ">
-      <div class=" col-lg-2">
+      <div class=" col-md-2">
 
         <div *ngFor="let pic of profPics">
           <div *ngIf="pic.profile_id==query.id">
@@ -18,7 +18,7 @@
           </div>
         </div>
       </div>
-      <div class=" col-lg-10 ">
+      <div class=" col-md-7 ">
         <table>
           <tr *ngFor="let sk of stylistSkills">
             <div *ngIf="sk.id==query.id">
@@ -31,6 +31,9 @@
             </td>
           </tr>
         </table>
+
+      </div>
+      <div class=" col-md-3 ">
 
       </div>
     </div>

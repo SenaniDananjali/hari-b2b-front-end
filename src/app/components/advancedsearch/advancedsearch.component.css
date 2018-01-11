@@ -3,8 +3,7 @@
   border-color: rgba(166, 92, 166, 0);
 }
 
-.coloumn {
-  background-color: lavender;
+.column {
   width: 100%;
   height: fit-content;
   /*padding-left: 5px;*/
@@ -12,8 +11,7 @@
 
 }
 input{
-  height: 29px;
-  border-color:lavenderblush;
+
 }
 
 .texting{
