@@ -39,14 +39,17 @@ export class DataService {
       .map(res => res.json());
 
   }
+
   getLocations() {
     return this.http.get('http://localhost/backend/src/api.php?f=getPreferredLocations')
       .map(res => res.json());
   }
+
   getStylistJob() {
     return this.http.get('http://localhost/backend/src/api.php?f=getJobRole')
       .map(res => res.json());
   }
+
   getJob() {
     return this.http.get('http://localhost/backend/src/api.php?f=job')
       .map(res => res.json());
@@ -56,8 +59,14 @@ export class DataService {
     return this.http.get('http://localhost/backend/src/api.php?f=locationForSearch')
       .map(res => res.json());
   }
+
   getFullDetails() {
     return this.http.get('http://localhost/backend/src/api.php?f=getFullDetails')
+      .map(res => res.json());
+  }
+
+  getCharges(id) {
+    return this.http.get('http://localhost/backend/src/api.php?f=getCharges&id=' + id)
       .map(res => res.json());
   }
 }

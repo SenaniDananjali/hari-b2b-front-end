@@ -24,6 +24,7 @@ export class CardsComponent implements OnInit {
   loc: Preferred[];
   locForSearch: LocForSearch[];
   full: Full[];
+  charges: Chargers[];
   // namesCommon: NamesCommon[] = [];
   // namesJ: NamesJ[] = [];
 
@@ -48,6 +49,10 @@ export class CardsComponent implements OnInit {
       console.log(this.namesSk);
     });
 
+    this.dataService.getCharges(1).subscribe((charges) => {
+      this.charges = charges;
+      console.log(this.charges);
+    });
 
     this.dataService.getFullDetails().subscribe((full) => {
       this.full = full;
@@ -392,53 +397,10 @@ interface Full {
   loc: string;
 }
 
-// this.dataService.getFullDetails().subscribe((full) => {
-//   this.full = full;
-//   console.log(this.full);
-//   for (let i = 0; i < full.length; i++) {
-//     if (this.query.location === full.loc) {
-//       if (this.query.ss === full.skill) {
-//         if (this.query.job === full.job) {
-//           const obj: any = {};
-//           obj.id = this.names[i].id;
-//           obj.first_name = this.names[i].first_name;
-//           obj.last_name = this.names[i].last_name;
-//
-//           this.namesSk.push(obj);
-//           console.log(obj);
-//         }
-//       }
-//
-//     }
-//   }
-// });
+interface Chargers {
+  sty_id: number;
+  slot: string;
+  charge: number;
+  currency: string;
 
-// dupNamesJ(sty: any[]) {
-//   for (let i = 0; i < this.names.length; i++) {
-//     for (let j = 0; j < sty.length; j++) {
-//       if (sty[j] === this.names[i].id) {
-//         const obj: any = {};
-//         obj.id = this.names[i].id;
-//         obj.first_name = this.names[i].first_name;
-//         obj.last_name = this.names[i].last_name;
-//
-//         this.namesJ.push(obj);
-//         console.log(obj);
-//
-//       }
-//     }
-//   }
-// }
-
-//   for (let i = 0; i < this.namesSk.length; i++) {
-//   for (let j = 0; j < this.namesJ.length; j++) {
-//   if (this.namesJ[j].id === this.namesSk[i].id) {
-//   const obj: any = {};
-//   obj.id = this.names[i].id;
-//   obj.first_name = this.names[i].first_name;
-//   obj.last_name = this.names[i].last_name;
-//   this.namesCommon.push(obj);
-//   console.log(obj);
-// }
-// }
-// }
+}

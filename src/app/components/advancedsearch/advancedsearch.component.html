@@ -1,63 +1,45 @@
 <div class="container">
-
-  <div class=" pt-2 pb-2 row " style=" margin-top: 150px;">
-    <div class="coloumn col-lg-3">
-
-      <div class="texting text-muted">I want a</div>
-      <input list="suggestions_job" style="width:200px" [(ngModel)]="j">
-
-      <datalist id="suggestions_job">
-
-        <option *ngFor="let j of job" [value]="j.job">
-      </datalist>
-
+  <div class=" pt-2 pb-2 row ">
+    <div class="col-sm-9">
+      <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+        <div class="input-group-addon">I want a</div>
+        <input class=" form-control form-control-success has-success" list="suggestions_job" style="width:200px" [(ngModel)]="j">
+        <datalist id="suggestions_job">
+          <option *ngFor="let j of job" [value]="j.job"></option>
+        </datalist>
+      </div>
     </div>
-
-    <div class=" coloumn col-lg-3">
-      <mat-form-field>
-        <input matInput [matDatepicker]="picker" placeholder="For " [(ngModel)]="for">
-        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker>
-
-        </mat-datepicker>
-
-      </mat-form-field>
-      <br>
-      <button class="date">{{for |date:'fullDate'}}</button>
-      <br>
+  </div>
+  <div class=" pt-2 pb-2 row ">
+    <div class="col-sm-9">
+      <div class="input-group mb-2 mr-sm-2 mb-sm-0 form-group has-success">
+        <div class="input-group-addon">Skills</div>
+        <input class=" form-control" list="suggestions_skill" style="width:200px"
+               [(ngModel)]="skill">
+        <datalist id="suggestions_skill">
+          <option *ngFor="let skill of skills" [value]="skill.description"></option>
+        </datalist>
+      </div>
     </div>
-
-
-    <div class="coloumn col-lg-3">
-
-      <div class="texting text-muted">Skills</div>
-      <input list="suggestions_skill" style="width:200px" [(ngModel)]="skill">
-
-      <datalist id="suggestions_skill">
-        <option *ngFor="let skill of skills" [value]="skill.description">
-      </datalist>
-
+  </div>
+  <div class=" pt-2 pb-2 row ">
+    <div class="col-sm-9">
+      <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+        <div class="input-group-addon">Stylist Locations</div>
+        <input class=" form-control form-control-success has-success" list="suggestions_loc" style="width:200px"
+               [(ngModel)]="loc">
+        <datalist id="suggestions_loc">
+          <option *ngFor="let loc of location" [value]="loc.city"></option>
+        </datalist>
+      </div>
     </div>
-
-    <div class="coloumn col-lg-3">
-
-      <div class="texting text-muted">Preferred Locations</div>
-      <input list="suggestions_loc" style="width:200px" [(ngModel)]="loc">
-
-      <datalist id="suggestions_loc">
-        <option *ngFor="let loc of location" [value]="loc.city">
-      </datalist>
-
-    </div>
-
   </div>
   <div class="row ">
     <div class="col-lg-8"></div>
     <div class="advancedSearch col-lg-3 col-lg-offset-9">
 
-      <button class="adva-search p-0.5" type="submit" routerLink="/searchCards"
-              [queryParams]="{day:for ,location:loc, ss:skill ,job:j}"> Search
-      </button>
+      <button type="button" class="btn btn-primary" routerLink="../searchCards"
+              [queryParams]="{location:loc, ss:skill ,job:j}" data-dismiss="modal">Search</button>
 
     </div>
   </div>
